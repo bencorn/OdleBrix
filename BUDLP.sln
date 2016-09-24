@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F0F160D5-5B7A-4593-9850-C4ABD905544F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D79DB03-007E-4C94-B1D8-0546C5E62613}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BUDLP", "src\BUDLP\BUDLP.xproj", "{CC3FACED-A20F-431F-A327-0997D1242F80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC3FACED-A20F-431F-A327-0997D1242F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3FACED-A20F-431F-A327-0997D1242F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3FACED-A20F-431F-A327-0997D1242F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3FACED-A20F-431F-A327-0997D1242F80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC3FACED-A20F-431F-A327-0997D1242F80} = {F0F160D5-5B7A-4593-9850-C4ABD905544F}
+	EndGlobalSection
+EndGlobal

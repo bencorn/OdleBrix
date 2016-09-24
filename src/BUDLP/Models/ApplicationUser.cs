@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BUDLP.Models
 {
-    // Add profile data for application users by adding properties to the ApplicationUser class
+    // Student User Account Basic Profile Settings
     public class ApplicationUser : IdentityUser
     {
     }

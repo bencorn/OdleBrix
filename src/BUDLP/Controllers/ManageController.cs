@@ -15,14 +15,14 @@ namespace BUDLP.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<AuthenticatedUser> _userManager;
+        private readonly SignInManager<AuthenticatedUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public ManageController(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
+        UserManager<AuthenticatedUser> userManager,
+        SignInManager<AuthenticatedUser> signInManager,
         IEmailSender emailSender,
         ILoggerFactory loggerFactory)
         {
@@ -228,7 +228,7 @@ namespace BUDLP.Controllers
             Error
         }
 
-        private Task<ApplicationUser> GetCurrentUserAsync()
+        private Task<AuthenticatedUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }

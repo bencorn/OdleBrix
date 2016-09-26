@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BUDLP.Data.Migrations;
+using BUDLP.Models.AuthUserModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,9 @@ namespace BUDLP.Data
     {
         public PlatformDbContext(DbContextOptions<PlatformDbContext> options)
                 : base(options)
-            {
+        {
         }
-    }
+            public DbSet<AuthUserProfile> AuthUserProfiles { get; set; }
 
+    }
 }

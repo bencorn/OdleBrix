@@ -16,7 +16,7 @@ namespace BUDLP.Data.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BUDLP.Models.ApplicationUser", b =>
+            modelBuilder.Entity("BUDLP.Models.AuthenticatedUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -25,10 +25,26 @@ namespace BUDLP.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<DateTime>("DateJoined");
+
                     b.Property<string>("Email")
                         .HasAnnotation("MaxLength", 256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsStaff");
+
+                    b.Property<bool>("IsSuperUser");
+
+                    b.Property<DateTime>("LastLogin");
+
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -182,7 +198,7 @@ namespace BUDLP.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("BUDLP.Models.ApplicationUser")
+                    b.HasOne("BUDLP.Models.AuthenticatedUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -190,7 +206,7 @@ namespace BUDLP.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("BUDLP.Models.ApplicationUser")
+                    b.HasOne("BUDLP.Models.AuthenticatedUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -203,7 +219,7 @@ namespace BUDLP.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BUDLP.Models.ApplicationUser")
+                    b.HasOne("BUDLP.Models.AuthenticatedUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

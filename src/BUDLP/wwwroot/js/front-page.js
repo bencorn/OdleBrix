@@ -1,0 +1,5 @@
+﻿$(function () {
+    $('.ui.accordion')
+  .accordion()
+    ;
+});

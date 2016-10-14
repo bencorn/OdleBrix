@@ -5,3 +5,50 @@
 .intro-section{
     background: #2196F3 !important;
 }
+
+.profile-section{
+    margin-top: 0 !important;
+}
+
+.login-modal{
+    width: 420px !important;
+    margin: 0 0 0 -210px !important;
+    margin-top: -200px !important;
+}
+
+.login-segment{
+    padding: 30px 30px 30px 30px !important;
+}
+
+.login-modal input{
+    height: 48px !important;
+    border-radius: 0 !important;
+}
+
+.login-modal .name-field{
+    border-bottom: 0px !important;
+}
+
+.login-modal .email-field{
+    border-bottom: 0px !important;
+
+}
+
+.login-modal .field{
+    margin: 0 !important;
+}
+
+.sign-up.button{
+    margin-top: 1em;
+    border-radius: 0;
+}
+
+.sign-up-terms{
+    padding-top: 10px;
+    color: rgba(0,0,0,0.54);
+    text-align: center;
+}
+
+.login-modal .login-header{
+    margin-left: 60px !important;
+}

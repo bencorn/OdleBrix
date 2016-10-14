@@ -1,5 +1,9 @@
 ﻿$(function () {
     $('.ui.accordion')
-  .accordion()
+        .accordion()
+    ;
+
+    $('.ui.dropdown')
+        .dropdown()
     ;
 });

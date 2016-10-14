@@ -8,63 +8,132 @@
     <script src="~/js/front-page.js"></script>
 </head>
 
-<div class="ui center aligned grid presenter">
-    <div class="eight wide column">
-        <div class="ui form">
-            <div class="grouped fields">
-                <label>Outbound Throughput</label>
-                <div class="field">
-                    <div class="ui slider checkbox">
-                        <input type="radio" name="throughput" checked="checked">
-                        <label>20 mbps max</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui slider checkbox">
-                        <input type="radio" name="throughput">
-                        <label>10mbps max</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui slider checkbox">
-                        <input type="radio" name="throughput">
-                        <label>5mbps max</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui slider checkbox checked">
-                        <input type="radio" name="throughput">
-                        <label>Unmetered</label>
-                    </div>
-                </div>
-            </div>
+<div class="front-page">
+    <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
+        <div style="margin-top: 4em;" class="ui text container">
+            <h1 class="ui inverted header">
+                Build Your Own Learning Experience
+            </h1>
         </div>
     </div>
 
-    <div class="eight wide column">
-        <div class="ui styled accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>
-                What is a dog?
-            </div>
-            <div class="content">
-                <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-            </div>
-            <div class="title">
-                <i class="dropdown icon"></i>
-                What kinds of dogs are there?
-            </div>
-            <div class="content">
-                <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-            </div>
-            <div class="title active">
-                <i class="dropdown icon"></i>
-                How do you acquire a dog?
-            </div>
-            <div class="content active">
-                <p class="transition visible">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-                <p class="transition visible">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+    <div class="ui vertical masthead center aligned celled grid">
+        <div class="eight wide column">
+            <h1 class="ui header">
+                Select the language you'd like to learn.
+            </h1>
+            <div class="ui fluid floating labeled icon dropdown button">
+                <i class="code outline icon"></i>
+                <span class="text">Target Language</span>
+                <div class="menu">
+                    <div class="item">
+                        <img src="http://wikiprogramming.org/wp-content/uploads/2015/05/c-logo.png" class="ui tiny image " />
+                        C
+                    </div>
+                    <div class="item">
+                        <img src="https://ignite.apache.org/images/cpp.png" class="ui tiny image" />
+                        C++
+                    </div>
+                    <div class="item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="ui tiny image" />
+                        MATLAB
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="eight wide column">
+            <h1 class="ui header">
+                Select the topics you'd like to learn.
+            </h1>
+            <table class="ui celled table">
+                <thead class="full-width">
+                    <tr>
+                        <th></th>
+                        <th>Topic</th>
+                        <th>Prerequisite(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Introducing C++</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Compilation and Linking</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Basic Syntax</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Functions and Variables</td>
+                        <td>Basic Syntax</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Control Flow</td>
+                        <td>Basic Syntax</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Object-Oriented Programming</td>
+                        <td>Basic Syntax</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Memory Management</td>
+                        <td>Basic Syntax</td>
+                    </tr>
+                    <tr>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                        <td>Templates</td>
+                        <td>Basic Syntax</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+
+    <div class="ui vertical masthead center aligned grid">
+        <button class="ui blue button">Start Learning!</button>
+    </div>
+
+    </div>

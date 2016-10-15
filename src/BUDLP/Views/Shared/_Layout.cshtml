@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BUDLP</title>
 
-    <environment names="Development, Production">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
-    </environment>
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
 </head>
 <body class="pushable">
     @*<div class="navbar navbar-inverse navbar-fixed-top">
@@ -66,13 +69,5 @@
         </footer>*@
     </div>
 
-    <environment names="Development, Production">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/semantic/dist/semantic.min.js"></script>
-    </environment>
-
-    @RenderSection("scripts", required: false)
-</body>
+    </body>
 </html>

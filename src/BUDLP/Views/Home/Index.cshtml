@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="~/css/front-page.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/front-page.js"></script>
 </head>
 
@@ -49,7 +50,11 @@
             <table class="ui celled table">
                 <thead class="full-width">
                     <tr>
-                        <th></th>
+                        <th>
+                            <div class="ui fitted toggle master topic checkbox">
+                                <input checked="checked" type="checkbox"> <label></label>
+                            </div>
+                        </th>
                         <th>Topic</th>
                         <th>Prerequisite(s)</th>
                     </tr>

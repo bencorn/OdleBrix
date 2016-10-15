@@ -5,11 +5,14 @@
 <head>
     <link rel="stylesheet" href="~/css/front-page.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/angular/dlp.js"></script>
+    <script src="~/js/angular/frontPageController.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/front-page.js"></script>
 </head>
 
-<div class="front-page">
+<div class="front-page" ng-app="dlp" ng-controller="frontPageController as vm">
     <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
         <div style="margin-top: 4em;" class="ui text container">
             <h1 class="ui inverted header">
@@ -23,19 +26,19 @@
             <h1 class="ui header">
                 Select the language you'd like to learn.
             </h1>
-            <div class="ui fluid floating labeled icon dropdown button">
+            <div class="ui fluid floating labeled icon language dropdown button">
                 <i class="code outline icon"></i>
                 <span class="text">Target Language</span>
                 <div class="menu">
-                    <div class="item">
+                    <div class="item" data-value="C">
                         <img src="http://wikiprogramming.org/wp-content/uploads/2015/05/c-logo.png" class="ui tiny image " />
                         C
                     </div>
-                    <div class="item">
+                    <div class="item" data-value="C++">
                         <img src="https://ignite.apache.org/images/cpp.png" class="ui tiny image" />
                         C++
                     </div>
-                    <div class="item">
+                    <div class="item" data-value="MATLAB">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="ui tiny image" />
                         MATLAB
                     </div>
@@ -51,9 +54,7 @@
                 <thead class="full-width">
                     <tr>
                         <th>
-                            <div class="ui fitted toggle master topic checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model="vm.UserProfile.ToggleAll"></checkbox>
                         </th>
                         <th>Topic</th>
                         <th>Prerequisite(s)</th>
@@ -62,72 +63,56 @@
                 <tbody>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Introducing C++</td>
                         <td>None</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Compilation and Linking</td>
                         <td>None</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Basic Syntax</td>
                         <td>None</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Functions and Variables</td>
                         <td>Basic Syntax</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Control Flow</td>
                         <td>Basic Syntax</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Object-Oriented Programming</td>
                         <td>Basic Syntax</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Memory Management</td>
                         <td>Basic Syntax</td>
                     </tr>
                     <tr>
                         <td class="collapsing">
-                            <div class="ui fitted toggle checkbox">
-                                <input checked="checked" type="checkbox"> <label></label>
-                            </div>
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
                         </td>
                         <td>Templates</td>
                         <td>Basic Syntax</td>

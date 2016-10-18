@@ -25,7 +25,7 @@ namespace BUDLP.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("DateJoined");
+                    b.Property<DateTime?>("DateJoined");
 
                     b.Property<string>("Email")
                         .HasAnnotation("MaxLength", 256);

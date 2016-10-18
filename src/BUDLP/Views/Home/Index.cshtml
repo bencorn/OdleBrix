@@ -12,147 +12,121 @@
     <script src="~/js/front-page.js"></script>
 </head>
 
-<div class="front-page" ng-app="dlp" ng-controller="frontPageController as vm">
-    <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
-        <div style="margin-top: 4em;" class="ui text container">
-            <h1 class="ui inverted header">
-                Build Your Own Learning Experience
-            </h1>
+<div class="vessel" ng-app="dlp" ng-controller="frontPageController as vm">
+    <div class="front-page">
+        <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
+            <div style="margin-top: 4em;" class="ui text container">
+                <h1 class="ui inverted header">
+                    Build Your Own Learning Experience
+                </h1>
+            </div>
         </div>
-    </div>
 
-    <div class="ui vertical profile-section center aligned celled grid">
-        <div class="eight wide column">
-            <h1 class="ui header">
-                Select the language you'd like to learn.
-            </h1>
-            <div class="ui fluid floating labeled icon language dropdown button">
-                <i class="code outline icon"></i>
-                <span class="text">Target Language</span>
-                <div class="menu">
-                    <div class="item" data-value="C">
-                        <img src="http://wikiprogramming.org/wp-content/uploads/2015/05/c-logo.png" class="ui tiny image " />
-                        C
-                    </div>
-                    <div class="item" data-value="C++">
-                        <img src="https://ignite.apache.org/images/cpp.png" class="ui tiny image" />
-                        C++
-                    </div>
-                    <div class="item" data-value="MATLAB">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="ui tiny image" />
-                        MATLAB
+        <div class="ui vertical profile-section center aligned celled grid">
+            @*<div class="eight wide column">
+                <h1 class="ui header">
+                    Select the language you'd like to learn.
+                </h1>
+                <div class="ui fluid floating labeled icon language dropdown button" ng-click="vm.GetSelectedLanguage()">
+                    <i class="code outline icon"></i>
+                    <span class="text">Target Language</span>
+                    <div class="menu">
+                        <div class="item" data-value="0">
+                            <img src="http://wikiprogramming.org/wp-content/uploads/2015/05/c-logo.png" class="ui tiny image " />
+                            C
+                        </div>
+                        <div class="item" data-value="1">
+                            <img src="https://ignite.apache.org/images/cpp.png" class="ui tiny image" />
+                            C++
+                        </div>
+                        <div class="item" data-value="2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="ui tiny image" />
+                            MATLAB
+                        </div>
                     </div>
                 </div>
+            </div>*@
+
+            <div class="sixteen wide column">
+                <h1 class="ui header">
+                    Select the topics you'd like to learn.
+                </h1>
+                <table ng-hide="!vm.SelectedLanguage.Topics" class="ui celled table">
+                    <thead class="full-width">
+                        <tr>
+                            <th>
+                                <checkbox class="ui fitted master checkbox toggle topic" checked="true" ng-model="vm.UserProfile.ToggleAll"></checkbox>
+                            </th>
+                            <th>Topic</th>
+                            <th>Learned In</th>
+                            <th>Prerequisite(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in vm.SelectedLanguage.Topics">
+                            <td class="collapsing">
+                                <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
+                            </td>
+                            <td>{{x.TopicName}}</td>
+                            <td>
+                                <div class="ui fluid floating labeled icon language dropdown button" ng-click="vm.GetSelectedLanguage()">
+                                    <i class="code outline icon"></i>
+                                    <span class="text">Target Language</span>
+                                    <div class="menu">
+                                        <div class="item" data-value="0">
+                                            <img src="http://wikiprogramming.org/wp-content/uploads/2015/05/c-logo.png" class="ui tiny image " />
+                                            C
+                                        </div>
+                                        <div class="item" data-value="1">
+                                            <img src="https://ignite.apache.org/images/cpp.png" class="ui tiny image" />
+                                            C++
+                                        </div>
+                                        <div class="item" data-value="2">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="ui tiny image" />
+                                            MATLAB
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{x.PreReq}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="eight wide column">
-            <h1 class="ui header">
-                Select the topics you'd like to learn.
-            </h1>
-            <table class="ui celled table">
-                <thead class="full-width">
-                    <tr>
-                        <th>
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model="vm.UserProfile.ToggleAll"></checkbox>
-                        </th>
-                        <th>Topic</th>
-                        <th>Prerequisite(s)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Introducing C++</td>
-                        <td>None</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Compilation and Linking</td>
-                        <td>None</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Basic Syntax</td>
-                        <td>None</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Functions and Variables</td>
-                        <td>Basic Syntax</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Control Flow</td>
-                        <td>Basic Syntax</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Object-Oriented Programming</td>
-                        <td>Basic Syntax</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Memory Management</td>
-                        <td>Basic Syntax</td>
-                    </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <checkbox class="ui fitted toggle topic" checked="true" ng-model=""></checkbox>
-                        </td>
-                        <td>Templates</td>
-                        <td>Basic Syntax</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="ui vertical masthead center aligned grid">
+            <button class="ui blue button login-button">Start Learning!</button>
         </div>
+
     </div>
 
-    <div class="ui vertical masthead center aligned grid">
-        <button class="ui blue button login-button">Start Learning!</button>
-    </div>
+    <div class="ui small basic modal transition login-modal">
+        <h1 class="ui header login-header">
+            Create Your Account
+        </h1>
+        <div class="ui segment login-segment">
+            <form class="ui form">
+                <div class="field">
+                    <input ng-model="vm.UserProfile.FullName" class="name-field" type="text" placeholder="Full Name" />
+                </div>
+                <div class="field">
+                    <input ng-model="vm.UserProfile.Email" class="email-field" type="text" placeholder="Email" />
+                </div>
+                <div class="field">
+                    <input ng-model="vm.UserProfile.Password" type="password" placeholder="Password" />
+                </div>
 
-</div>
+                <button ng-click="vm.CreateProfile()" class="ui fluid blue sign-up button">Sign Up</button>
 
-<div class="ui small basic modal transition login-modal">
-    <h1 class="ui header login-header">
-        Create Your Account
-    </h1>
-    <div class="ui segment login-segment">
-        <form class="ui form">
-            <div class="field">
-                <input class="name-field" type="text" placeholder="Full Name" />
+            </form>
+
+            <div class="sign-up-terms">
+                By signing up to create an account I accept BUDLP
+                <br />
+                Terms of Use and Privacy Policy.
             </div>
-            <div class="field">
-                <input class="email-field" type="text" placeholder="Email" />
-            </div>
-            <div class="field">
-                <input type="password" placeholder="Password" />
-            </div>
 
-            <button class="ui fluid blue sign-up button">Sign Up</button>
-
-        </form>
-
-        <div class="sign-up-terms">
-            By signing up to create an account I accept BUDLP
-            <br />
-            Terms of Use and Privacy Policy.
         </div>
-
     </div>
 </div>

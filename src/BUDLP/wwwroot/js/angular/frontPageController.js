@@ -44,6 +44,44 @@
 
         var vm = this;
         vm.UserProfile = {};
+        vm.SelectedLanguage = {};
+
+        vm.CreateProfile = function(){
+            var payload = {
+                FullName: vm.UserProfile.FullName,
+                Email: vm.UserProfile.Email,
+                Password: vm.UserProfile.Password,
+                ProfileTopics: vm.SelectedLanguage.Topics}
+
+                $http.post("/api/profile/create", payload)
+                    .then(function (result) {
+                        vm.UserProfile = {};
+                        $('.login-modal')
+                            .modal('hide')
+                        ;
+                    },
+                    function () {
+
+                    })
+                    .finally(function () {
+
+                    });
+            
+        }
+
+
+        var payload = { Language: "1"};
+
+        $http.post("/api/topics/get", payload)
+                    .then(function (result) {
+                        vm.SelectedLanguage.Topics = JSON.parse(result.data);
+                    },
+                    function () {
+
+                    })
+                    .finally(function () {
+
+                    });
 
     }
 

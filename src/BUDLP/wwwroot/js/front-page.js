@@ -12,7 +12,7 @@
 
     // Front-page topic toggle all
     $('.master.topic.checkbox')
-  .checkbox({
+        .checkbox({
       // check all children
       onChecked: function () {
           var

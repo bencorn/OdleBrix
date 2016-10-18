@@ -21,6 +21,6 @@ namespace BUDLP.Models
         [Required]
         public bool IsSuperUser { get; set; }
         public DateTime LastLogin { get; set; }
-        public DateTime DateJoined { get; set; }
+        public DateTime? DateJoined { get; set; }
     }
 }

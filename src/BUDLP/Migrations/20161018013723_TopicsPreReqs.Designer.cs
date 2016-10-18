@@ -8,9 +8,10 @@ using BUDLP.Data;
 namespace BUDLP.Migrations
 {
     [DbContext(typeof(PlatformDbContext))]
-    partial class PlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161018013723_TopicsPreReqs")]
+    partial class TopicsPreReqs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -62,22 +63,6 @@ namespace BUDLP.Migrations
                     b.HasKey("TopicId");
 
                     b.ToTable("Topics");
-                });
-
-            modelBuilder.Entity("BUDLP.Models.TopicModels.UserProfileTopic", b =>
-                {
-                    b.Property<int>("UserProfileTopicId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("ToLearn");
-
-                    b.Property<int>("TopicId");
-
-                    b.Property<string>("UserProfileId");
-
-                    b.HasKey("UserProfileTopicId");
-
-                    b.ToTable("UserProfileTopics");
                 });
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BUDLP.Data.Migrations;
 using BUDLP.Models.AuthUserModels;
+using BUDLP.Models.TopicModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace BUDLP.Data
         {
         }
             public DbSet<AuthUserProfile> AuthUserProfiles { get; set; }
-
+            public DbSet<Topic> Topics { get; set; }
+            public DbSet<UserProfileTopic> UserProfileTopics { get; set; }
     }
 }

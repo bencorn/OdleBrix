@@ -52,23 +52,23 @@
                 <h1 class="ui header">
                     Select the topics you'd like to learn.
                 </h1>
-                <table ng-hide="!vm.SelectedLanguage.Topics" class="ui celled table">
+                <table ng-hide="!vm.Topics" class="ui celled table">
                     <thead class="full-width">
                         <tr>
                             <th>Learn</th>
                             <th>Topic</th>
-                            <th class="three wide">Learned In</th>
+                            <th class="five wide">Learned In</th>
                             <th>Prerequisite(s)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="x in vm.SelectedLanguage.Topics">
+                        <tr ng-repeat="x in vm.Topics">
                             <td class="collapsing">
                                 <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
                             </td>
                             <td>{{x.TopicName}}</td>
                             <td>
-                                <select multiple="" class="ui fluid dropdown">
+                                <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown">
                                     <option value="0">None</option>
                                     <option value="1">C</option>
                                     <option value="2">C++</option>

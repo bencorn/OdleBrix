@@ -51,7 +51,8 @@ namespace BUDLP.APIControllers
                     {
                         ToLearn = top.ToLearn,
                         TopicId = top.TopicId,
-                        UserProfileId = user.Id
+                        UserProfileId = user.Id,
+                        PastExperience = JsonConvert.SerializeObject(top.PastExperience)
                     });
                 }
 
@@ -74,6 +75,7 @@ namespace BUDLP.APIControllers
         public class Topics : Topic
         {
             public bool ToLearn { get; set; }
+            public List<int> PastExperience { get; set; }
         }
     }
 }

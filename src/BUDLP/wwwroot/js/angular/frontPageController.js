@@ -44,14 +44,14 @@
 
         var vm = this;
         vm.UserProfile = {};
-        vm.SelectedLanguage = {};
+        vm.Topics = {};
 
         $(function () {
             var payload = { Language: "1" };
 
             $http.post("/api/topics/get", payload)
                         .then(function (result) {
-                            vm.SelectedLanguage.Topics = JSON.parse(result.data);
+                            vm.Topics = JSON.parse(result.data);
 
                             $timeout(function () {
                                 $('.ui.dropdown')
@@ -72,7 +72,7 @@
                 FullName: vm.UserProfile.FullName,
                 Email: vm.UserProfile.Email,
                 Password: vm.UserProfile.Password,
-                ProfileTopics: vm.SelectedLanguage.Topics}
+                ProfileTopics: vm.Topics}
 
                 $http.post("/api/profile/create", payload)
                     .then(function (result) {

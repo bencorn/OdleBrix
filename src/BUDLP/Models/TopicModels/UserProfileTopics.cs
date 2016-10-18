@@ -11,5 +11,6 @@ namespace BUDLP.Models.TopicModels
         public int TopicId { get; set; }
         public string UserProfileId { get; set; }
         public bool ToLearn { get; set; }
+        public string PastExperience { get; set; }
     }
 }

@@ -40,11 +40,32 @@
     });
 
     // code for controller itself
-    function frontPageController($http) {
+    function frontPageController($http, $timeout) {
 
         var vm = this;
         vm.UserProfile = {};
         vm.SelectedLanguage = {};
+
+        $(function () {
+            var payload = { Language: "1" };
+
+            $http.post("/api/topics/get", payload)
+                        .then(function (result) {
+                            vm.SelectedLanguage.Topics = JSON.parse(result.data);
+
+                            $timeout(function () {
+                                $('.ui.dropdown')
+                                .dropdown()
+                                ;
+                            })
+                        },
+                        function () {
+
+                        })
+                        .finally(function () {
+
+                        });
+        });
 
         vm.CreateProfile = function(){
             var payload = {
@@ -68,20 +89,6 @@
                     });
             
         }
-
-
-        var payload = { Language: "1"};
-
-        $http.post("/api/topics/get", payload)
-                    .then(function (result) {
-                        vm.SelectedLanguage.Topics = JSON.parse(result.data);
-                    },
-                    function () {
-
-                    })
-                    .finally(function () {
-
-                    });
 
     }
 

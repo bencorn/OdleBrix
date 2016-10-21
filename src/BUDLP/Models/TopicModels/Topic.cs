@@ -19,5 +19,6 @@ namespace BUDLP.Models.TopicModels
         public int Language { get; set; }
         public string TopicName { get; set; }
         public string PreReq { get; set; }
+        public List<TopicModule> TopicModules { get; set; }
     }
 }

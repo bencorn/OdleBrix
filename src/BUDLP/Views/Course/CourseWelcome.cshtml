@@ -5,129 +5,79 @@
     <script src="~/js/angular/dlp.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/front-page.js"></script>
-    <script src="~/js/angular/frontPageController.js"></script>
+    <script src="~/js/angular/courseController.js"></script>
 
 </head>
 
 
-<div class="ui vertical left visible sidebar menu">
-    <a class="item">
-        Home
-    </a>
-    <a class="item">
-        Introduction to Coding
-    </a>
-</div>
-<div class="pusher">
-    <div class="ui container">
-        <div class="ui styled fluid accordion">
-            <div class="title active">
-                Introduction to Coding
-                <div class="topic-time-remaining">
-                    Estimated time: 2h 35m
-                    <i class="chevron down icon"></i>
-                </div>
-            </div>
-            <div class="content active">
-                <div class="transition visible" style="display: block !important;">
-                    <table class="ui very basic table">
-                        <thead>
-                            <tr>
-                                <th>TOPIC</th>
-                                <th>REMAINING</th>
-                                <th>QUIZZES</th>
-                                <th>GRADE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="course-topic heading">Variables</td>
-                                <td>6h 34 min left</td>
-                                <td>
-                                    Variable Creation
-                                </td>
-                                <td>65%</td>
-                            </tr>
-                            <tr>
-                                <td class="course-topic heading">Logic Flow</td>
-                                <td>34 min left</td>
-                                <td>
-                                    If
-                                    <br />
-                                    If Else
-                                    <br />
-                                    Complex Logic
-                                </td>
-                                <td>20%</td>
-                            </tr>
-                            <tr>
-                                <td class="course-topic heading">Programs</td>
-                                <td>20 min left</td>
-                                <td>
-                                    Modularity
-                                    <br />
-                                    Separation of Concerns
-                                </td>
-                                <td>40%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="ui styled fluid accordion">
-            <div class="title active">
-                Variables
-                <div class="topic-time-remaining">
-                    Estimated time: 7h 32m
-                    <i class="chevron down icon"></i>
-                </div>
-            </div>
-            <div class="content">
-                <div class="transition visible" style="display: block !important;">
-                    <table class="ui very basic table">
-                        <thead>
-                            <tr>
-                                <th>TOPIC</th>
-                                <th>REMAINING</th>
-                                <th>QUIZZES</th>
-                                <th>GRADE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="course-topic heading">Variables</td>
-                                <td>6h 34 min left</td>
-                                <td>
-                                    <a>Quiz 1</a>
-                                    <br />
-                                    <a>Quiz 2</a>
-                                </td>
-                                <td>65%</td>
-                            </tr>
-                            <tr>
-                                <td class="course-topic heading">Logic Flow</td>
-                                <td>34 min left</td>
-                                <td>1/5 complete</td>
-                                <td>20%</td>
-                            </tr>
-                            <tr>
-                                <td class="course-topic heading">Programs</td>
-                                <td>20 min left</td>
-                                <td>1/2 complete</td>
-                                <td>40%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<body ng-app="dlp" ng-controller="courseController as vm">
+    <div class="ui vertical left visible sidebar menu">
+        <a class="item">
+            Home
+        </a>
+        <a class="item">
+            Introduction to Coding
+        </a>
     </div>
-</div>
-
-<script type="text/javascript">
-    $('.ui.accordion')
-        .accordion()
-    ;
-</script>
+    <div class="pusher">
+        <div class="ui container">
+            <div ng-repeat="x in vm.Topics">
+                <div class="ui styled fluid accordion">
+                    <div class="title">
+                        {{x.Topic.TopicName}}
+                        <div class="topic-time-remaining">
+                            Estimated time: 2h 35m
+                            <i class="chevron down icon"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="transition visible" style="display: block !important;">
+                            <table class="ui very basic table">
+                                <thead>
+                                    <tr>
+                                        <th>TOPIC</th>
+                                        <th>REMAINING</th>
+                                        <th>QUIZZES</th>
+                                        <th>GRADE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="course-topic heading">Variables</td>
+                                        <td>6h 34 min left</td>
+                                        <td>
+                                            Variable Creation
+                                        </td>
+                                        <td>65%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="course-topic heading">Logic Flow</td>
+                                        <td>34 min left</td>
+                                        <td>
+                                            If
+                                            <br />
+                                            If Else
+                                            <br />
+                                            Complex Logic
+                                        </td>
+                                        <td>20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="course-topic heading">Programs</td>
+                                        <td>20 min left</td>
+                                        <td>
+                                            Modularity
+                                            <br />
+                                            Separation of Concerns
+                                        </td>
+                                        <td>40%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+</body>

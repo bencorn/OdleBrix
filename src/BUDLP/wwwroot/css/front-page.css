@@ -3,7 +3,8 @@
 }
 
 .intro-section{
-    background: #2196F3 !important;
+    background-image: url('https://s-media-cache-ak0.pinimg.com/originals/f5/51/5e/f5515ebe09ffd16984bb095d7917cbd0.jpg') !important;
+    background-repeat: repeat;
 }
 
 .profile-section{

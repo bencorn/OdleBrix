@@ -9,6 +9,7 @@ using BUDLP.Models;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using BUDLP.Models.TopicModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace BUDLP.APIControllers
 {
@@ -36,9 +37,23 @@ namespace BUDLP.APIControllers
             return new JsonResult(result);
         }
 
+        [HttpGet("api/modules/get")]
+        public async Task<JsonResult> GetProfileTopics()
+        {
+            var user = await GetCurrentUserAsync();
+            var topics = _ctx.UserProfileTopics.Where(x => x.UserProfileId == "ed5bb2e1-5d51-4dd5-8d30-5fa03ce32dac").Include(t => t.Topic).ToList();
+
+            var result = JsonConvert.SerializeObject(topics);
+
+            return new JsonResult(result);
+        }
+
         public class GetTopicPayload
         {
             public int Language { get; set; }
         }
+
+        private Task<AuthenticatedUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
     }
 }

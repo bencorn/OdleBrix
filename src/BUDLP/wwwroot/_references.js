@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="js/angular/coursecontroller.js" />
 /// <reference path="js/angular/dlp.js" />
 /// <reference path="js/angular/frontpagecontroller.js" />
 /// <reference path="js/front-page.js" />

@@ -15,8 +15,11 @@ namespace BUDLP.Data
                 : base(options)
         {
         }
-            public DbSet<AuthUserProfile> AuthUserProfiles { get; set; }
-            public DbSet<Topic> Topics { get; set; }
-            public DbSet<UserProfileTopic> UserProfileTopics { get; set; }
+        public DbSet<AuthUserProfile> AuthUserProfiles { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<UserProfileTopic> UserProfileTopics { get; set; }
+        public DbSet<TopicModule> TopicModules { get; set; }
+        public DbSet<TopicModuleContent> TopicModuleContent { get; set; }
+
     }
 }

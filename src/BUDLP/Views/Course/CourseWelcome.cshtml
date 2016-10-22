@@ -1,38 +1,56 @@
 ﻿<head>
-    <link rel="stylesheet" href="~/css/course-welcome.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="~/css/course-welcome.css" />
     <script src="~/lib/angular/angular.min.js"></script>
     <script src="~/js/angular/dlp.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
-    <script src="~/js/front-page.js"></script>
     <script src="~/js/angular/courseController.js"></script>
 
 </head>
 
 
 <body ng-app="dlp" ng-controller="courseController as vm">
-    <div class="ui vertical left visible sidebar menu">
-        <a class="item">
-            Home
-        </a>
-        <a class="item">
-            Introduction to Coding
+    <div class="ui fixed borderless menu">
+        <div class="ui container">
+            <div class="header item">
+                <img class="logo" src="http://www.firecracker.me/webhook-uploads/1470426413399/2000px-Boston_University_Wordmark.png">
+            </div>
+            <div class="right header item">
+                <a class="ui blue big circular label">BC</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui vertical left visible sidebar borderless menu">
+        <a ng-repeat="x in vm.Topics" class="item">
+            {{x.Topic.TopicName}}
         </a>
     </div>
     <div class="pusher">
         <div class="ui container">
+            <h1 class="ui centered course-intro header">Introduction to Computer Programming</h1>
             <div ng-repeat="x in vm.Topics">
                 <div class="ui styled fluid accordion">
                     <div class="title">
                         {{x.Topic.TopicName}}
-                        <div class="topic-time-remaining">
+                        <div ng-show="x.ToLearn" class="topic-time-remaining">
                             Estimated time: 2h 35m
                             <i class="chevron down icon"></i>
                         </div>
                     </div>
-                    <div class="content">
+                    <div ng-class="(!x.ToLearn) ? 'ui dimmable dimmed' : ''" class="content">
+                        <div class="ui simple dimmer">
+                            <div class="content">
+                                <div class="center">
+                                        <h1 style="color:rgba(0, 0, 0, 0.95);">Want to enable this module?</h1>
+                                        <checkbox class="ui fitted toggle topic" ng-model="x.ToLearn"></checkbox>
+                                </div>
+                            </div>
+                        </div>
                         <div class="transition visible" style="display: block !important;">
-                            <table class="ui very basic table">
+                            <table class="ui selectable very basic table">
                                 <thead>
                                     <tr>
                                         <th>TOPIC</th>
@@ -42,42 +60,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="course-topic heading">Variables</td>
+                                    <tr ng-repeat="t in x.Topic.TopicModules">
+                                        <td class= course-topic heading">{{t.TopicModuleTitle}}</td>
                                         <td>6h 34 min left</td>
                                         <td>
-                                            Variable Creation
+                                            <a ng-repeat="content in t.TopicModuleContent">
+                                                {{content.ModuleTitle}}
+                                                <br />
+                                            </a>
                                         </td>
                                         <td>65%</td>
                                     </tr>
-                                    <tr>
-                                        <td class="course-topic heading">Logic Flow</td>
-                                        <td>34 min left</td>
-                                        <td>
-                                            If
-                                            <br />
-                                            If Else
-                                            <br />
-                                            Complex Logic
-                                        </td>
-                                        <td>20%</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="course-topic heading">Programs</td>
-                                        <td>20 min left</td>
-                                        <td>
-                                            Modularity
-                                            <br />
-                                            Separation of Concerns
-                                        </td>
-                                        <td>40%</td>
-                                    </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
                 <br />
             </div>
         </div>
+    </div>
 </body>

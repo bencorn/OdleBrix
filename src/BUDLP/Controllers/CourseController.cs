@@ -10,7 +10,7 @@ namespace BUDLP.Controllers
     {
         public IActionResult Index()
         {
-            return View("CourseWelcome");
+            return PartialView("CourseWelcome");
         }
     }
 }

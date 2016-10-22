@@ -77,7 +77,7 @@ namespace BUDLP.Migrations
 
                     b.HasIndex("TopicId");
 
-                    b.ToTable("TopicModule");
+                    b.ToTable("TopicModules");
                 });
 
             modelBuilder.Entity("BUDLP.Models.TopicModels.TopicModuleContent", b =>
@@ -86,6 +86,10 @@ namespace BUDLP.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ModuleContent");
+
+                    b.Property<float>("ModuleTime");
+
+                    b.Property<string>("ModuleTitle");
 
                     b.Property<int>("TopicModuleContentType");
 
@@ -113,6 +117,8 @@ namespace BUDLP.Migrations
 
                     b.HasKey("UserProfileTopicId");
 
+                    b.HasIndex("TopicId");
+
                     b.ToTable("UserProfileTopics");
                 });
 
@@ -126,9 +132,17 @@ namespace BUDLP.Migrations
 
             modelBuilder.Entity("BUDLP.Models.TopicModels.TopicModuleContent", b =>
                 {
-                    b.HasOne("BUDLP.Models.TopicModels.TopicModule")
-                        .WithMany("TopicModules")
+                    b.HasOne("BUDLP.Models.TopicModels.TopicModule", "TopicModule")
+                        .WithMany("TopicModuleContent")
                         .HasForeignKey("TopicModuleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BUDLP.Models.TopicModels.UserProfileTopic", b =>
+                {
+                    b.HasOne("BUDLP.Models.TopicModels.Topic", "Topic")
+                        .WithMany()
+                        .HasForeignKey("TopicId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

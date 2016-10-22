@@ -1,5 +1,5 @@
 ﻿.pusher{
-    margin-top: 50px !important;
+    margin-top: 120px !important;
 }
 
 .container{
@@ -17,7 +17,7 @@
 }
 
 .ui.sidebar.menu{
-    margin-top: 49px !important;
+    margin-top: 63px !important;
 }
 
 .ui.sidebar.visible ~ .pusher {
@@ -32,7 +32,8 @@
     line-height: 1.5;
     font-size: 1.1em;
     border: none !important;
-    box-shadow: none !important
+    box-shadow: none;
+    font-weight: 300;
 }
 
 .ui.styled.accordion{
@@ -54,6 +55,7 @@
 
 .course-topic{
     font-size: 1.2em !important;
+    font-weight: 300 !important;
 }
 
 .ui.table thead th{
@@ -69,4 +71,12 @@
 .chevron.down.icon{
     padding-left: 20px;
     padding-right: 10px;
+}
+
+.course-intro.header{
+    margin-bottom: 40px;
+}
+
+.logo{
+    width: 5.5em !important;
 }

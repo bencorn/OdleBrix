@@ -41,7 +41,13 @@ namespace BUDLP.APIControllers
         public async Task<JsonResult> GetProfileTopics()
         {
             var user = await GetCurrentUserAsync();
-            var topics = _ctx.UserProfileTopics.Where(x => x.UserProfileId == "ed5bb2e1-5d51-4dd5-8d30-5fa03ce32dac").Include(t => t.Topic).ToList();
+            var topics = _ctx.UserProfileTopics
+                .Where(x => x.UserProfileId == "ed5bb2e1-5d51-4dd5-8d30-5fa03ce32dac")
+                .Include(course => course.Topic)
+                .ThenInclude(topic => topic.TopicModules)
+                .ToList();
+
+            _ctx.TopicModuleContent.Load();
 
             var result = JsonConvert.SerializeObject(topics);
 

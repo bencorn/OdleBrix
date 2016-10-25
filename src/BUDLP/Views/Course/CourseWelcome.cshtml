@@ -1,9 +1,11 @@
 ﻿<head>
+    <base href="/" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="~/css/course-welcome.css" />
     <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular/angular-route.min.js"></script>
     <script src="~/js/angular/dlp.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/angular/courseController.js"></script>
@@ -29,8 +31,12 @@
         </a>
     </div>
     <div class="pusher">
-        <div class="ui container">
+        <div ng-view></div>
+        @*<div class="ui container">
             <h1 class="ui centered course-intro header">Introduction to Computer Programming</h1>
+            <div ng-view>
+
+            </div>
             <div ng-repeat="x in vm.Topics">
                 <div class="ui styled fluid accordion">
                     <div class="title">
@@ -64,7 +70,7 @@
                                         <td class= course-topic heading">{{t.TopicModuleTitle}}</td>
                                         <td>6h 34 min left</td>
                                         <td>
-                                            <a ng-repeat="content in t.TopicModuleContent">
+                                            <a ng-href="#/learn/10/20" ng-repeat="content in t.TopicModuleContent">
                                                 {{content.ModuleTitle}}
                                                 <br />
                                             </a>
@@ -78,6 +84,6 @@
                 </div>
                 <br />
             </div>
-        </div>
+        </div>*@
     </div>
 </body>

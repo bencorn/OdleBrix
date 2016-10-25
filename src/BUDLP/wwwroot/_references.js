@@ -2,6 +2,7 @@
 /// <reference path="js/angular/coursecontroller.js" />
 /// <reference path="js/angular/dlp.js" />
 /// <reference path="js/angular/frontpagecontroller.js" />
+/// <reference path="js/angular/modulecontroller.js" />
 /// <reference path="js/front-page.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/angular/angular.js" />

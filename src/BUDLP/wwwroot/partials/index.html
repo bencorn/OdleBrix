@@ -1,0 +1,76 @@
+﻿<div class="front-page">
+    <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
+        <div style="margin-top: 4em;" class="ui text container">
+            <h1 class="ui inverted header">
+                Build Your Own Learning Experience
+            </h1>
+        </div>
+    </div>
+
+    <div class="ui vertical profile-section center aligned celled grid">
+
+        <div class="sixteen wide column">
+            <table ng-hide="!vm.Topics" class="ui celled table">
+                <thead class="full-width">
+                    <tr>
+                        <th>Learn</th>
+                        <th>Topic</th>
+                        <th class="five wide">Previously Completed Topic In</th>
+                        <th>Prerequisite(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.Topics">
+                        <td class="collapsing">
+                            <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
+                        </td>
+                        <td>{{x.TopicName}}</td>
+                        <td>
+                            <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown">
+                                <option value="0">None</option>
+                                <option value="1">C</option>
+                                <option value="2">C++</option>
+                                <option value="3">MATLAB</option>
+                            </select>
+                        </td>
+                        <td>{{x.PreReq}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="ui vertical masthead center aligned grid">
+        <button class="ui blue button login-button">Create Profile</button>
+    </div>
+
+</div>
+
+<div class="ui small basic modal transition login-modal">
+    <h1 class="ui header login-header">
+        Create Your Account
+    </h1>
+    <div class="ui segment login-segment">
+        <form class="ui form">
+            <div class="field">
+                <input ng-model="vm.UserProfile.FullName" class="name-field" type="text" placeholder="Full Name" />
+            </div>
+            <div class="field">
+                <input ng-model="vm.UserProfile.Email" class="email-field" type="text" placeholder="Email" />
+            </div>
+            <div class="field">
+                <input ng-model="vm.UserProfile.Password" type="password" placeholder="Password" />
+            </div>
+
+            <button ng-click="vm.CreateProfile()" class="ui fluid blue sign-up button">Sign Up</button>
+
+        </form>
+
+        <div class="sign-up-terms">
+            By signing up to create an account I accept BUDLP
+            <br />
+            Terms of Use and Privacy Policy.
+        </div>
+
+    </div>
+</div>

@@ -40,7 +40,17 @@
     });
 
     // code for controller itself
-    function frontPageController($http, $timeout) {
+    function frontPageController($http, $timeout, $routeParams) {
+
+        // Init all dropdowns to Semantic UI dropdown
+        $('.ui.dropdown')
+            .dropdown()
+        ;
+
+        // Front-page login button toggle login modal
+        $('.login-modal')
+            .modal('attach events', '.login-button')
+        ;
 
         var vm = this;
         vm.UserProfile = {};
@@ -80,6 +90,7 @@
                         $('.login-modal')
                             .modal('hide')
                         ;
+                        window.location.href = "/Course";
                     },
                     function () {
 

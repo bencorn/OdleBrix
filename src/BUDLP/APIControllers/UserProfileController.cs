@@ -9,6 +9,7 @@ using BUDLP.Models;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using BUDLP.Models.TopicModels;
+using BUDLP.Controllers;
 
 namespace BUDLP.APIControllers
 {
@@ -18,17 +19,19 @@ namespace BUDLP.APIControllers
         private ApplicationDbContext _appDb;
         private RoleManager<IdentityRole> _roleManager;
         private PlatformDbContext _ctx;
+        private SignInManager<AuthenticatedUser> _signInManager;
 
-        public UserProfileController(PlatformDbContext ctx, ApplicationDbContext appDb, UserManager<AuthenticatedUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UserProfileController(PlatformDbContext ctx, ApplicationDbContext appDb, UserManager<AuthenticatedUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AuthenticatedUser> signInManager)
         {
             _userManager = userManager;
             _ctx = ctx;
             _appDb = appDb;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost("api/profile/create")]
-        public async Task<JsonResult> GetTopics([FromBody] Profile payload)
+        public async Task<ActionResult> GetTopics([FromBody] Profile payload)
         {
             var user = new AuthenticatedUser { UserName = payload.Email, Email = payload.Email, FirstName = payload.FullName, LastName = "", IsStaff = false, IsActive = true, IsSuperUser = false };
             var result = await _userManager.CreateAsync(user, payload.Password);
@@ -57,6 +60,8 @@ namespace BUDLP.APIControllers
                 }
 
                 _ctx.SaveChanges();
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
             }
 
             return new JsonResult("Account created.");

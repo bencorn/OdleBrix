@@ -4,7 +4,7 @@
 
     // Retrieving inventory module
     angular.module("dlp")
-        .controller("courseController", courseController)
+        .controller("moduleController", moduleController)
         .directive('checkbox', function () {
             return {
                 restrict: 'E',
@@ -40,34 +40,9 @@
         });
 
     // code for controller itself
-    function courseController($http, $timeout, $routeParams, $scope) {
+    function moduleController($http, $timeout, $routeParams) {
 
         var vm = this;
-
-        vm.Module = {};
-        vm.moduleId = $routeParams.moduleId;
-        vm.contentModuleId = $routeParams.contentModuleId;
-
-        $scope.$watchCollection('[vm.moduleId, vm.contentModuleId]', function () {
-            var payload = { ModuleId: vm.moduleId, ContentModuleId: vm.contentModuleId }
-
-            if (vm.moduleId !== undefined) {
-                $http.post("/api/module/load", payload)
-                .then(function (result) {
-                    vm.Module = JSON.parse(result.data);
-
-                    $timeout(function () {
-                        $('.ui.embed').embed();
-                    })
-                },
-                function () {
-
-                })
-                .finally(function () {
-
-                });
-            }
-        });
 
         $(function () {
             // Load Course Topics Unique to Logged in User

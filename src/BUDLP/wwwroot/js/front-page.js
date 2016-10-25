@@ -1,14 +1,6 @@
 ﻿$(function () {
 
-    // Init all dropdowns to Semantic UI dropdown
-    $('.ui.dropdown')
-        .dropdown()
-    ;
 
-    // Front-page login button toggle login modal
-    $('.login-modal')
-        .modal('attach events', '.login-button')
-    ;
 
     // Front-page topic toggle all
     $('.master.topic.checkbox')

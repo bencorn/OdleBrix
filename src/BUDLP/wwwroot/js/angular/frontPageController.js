@@ -40,23 +40,23 @@
     });
 
     // code for controller itself
-    function frontPageController($http, $timeout, $routeParams, $scope) {
+    function frontPageController($http, $timeout, $scope) {
 
         // Init all dropdowns to Semantic UI dropdown
         var vm = this;
-        vm.UserProfile = {};
-        vm.UserProfile.TargetLanguage = 1;
+
 
         // Front-page login button toggle login modal
-        $('.login-modal')
-            .modal('attach events', '.login-button')
-        ;
-
-        vm.Topics = {};
-
         $(function () {
+            vm.Topics = {};
+            vm.UserProfile = {};
+            vm.UserProfile.TargetLanguage = 1;
             $('.ui.target.language.dropdown')
                 .dropdown('set selected', '1')
+            ;
+
+            $('.login-modal')
+                .modal('attach events', '.login-button')
             ;
         });
 

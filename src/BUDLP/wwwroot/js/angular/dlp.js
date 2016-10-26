@@ -3,11 +3,6 @@
     // Creating module
     var dlp = angular.module("dlp", ['ngRoute']).
     config(function ($routeProvider, $locationProvider) {
-        $routeProvider.when('/', {
-            templateUrl: '/partials/index.html',
-            controllerAs: "vm",
-            controller: 'frontPageController'
-        });
         $routeProvider.when('/course/', {
             templateUrl: '/partials/learn.html',
             controllerAs: "vm",

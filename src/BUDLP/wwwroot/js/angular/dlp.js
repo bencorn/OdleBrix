@@ -1,7 +1,7 @@
 ﻿(function () {
 
     // Creating module
-    var dlp = angular.module("dlp", ['ngRoute']).
+    var dlp = angular.module("dlp", ['ngRoute', 'static-include']).
     config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/', {
             templateUrl: '/partials/index.html',

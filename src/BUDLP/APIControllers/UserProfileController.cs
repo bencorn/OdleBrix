@@ -33,7 +33,7 @@ namespace BUDLP.APIControllers
         [HttpPost("api/profile/create")]
         public async Task<ActionResult> GetTopics([FromBody] Profile payload)
         {
-            var user = new AuthenticatedUser { UserName = payload.Email, Email = payload.Email, FirstName = payload.FullName, LastName = "", IsStaff = false, IsActive = true, IsSuperUser = false };
+            var user = new AuthenticatedUser { UserName = payload.Email, Email = payload.Email, FullName = payload.FullName,TargetLanguage = payload.TargetLanguage, IsStaff = false, IsActive = true, IsSuperUser = false };
             var result = await _userManager.CreateAsync(user, payload.Password);
 
             if (result.Succeeded)
@@ -74,6 +74,7 @@ namespace BUDLP.APIControllers
             public string FullName { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
+            public int TargetLanguage { get; set; }
             public List<Topics> ProfileTopics { get; set; }
         }
 

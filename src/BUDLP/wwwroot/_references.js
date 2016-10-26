@@ -4,6 +4,7 @@
 /// <reference path="js/angular/frontpagecontroller.js" />
 /// <reference path="js/angular/modulecontroller.js" />
 /// <reference path="js/front-page.js" />
+/// <reference path="js/jquery.blockui.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />

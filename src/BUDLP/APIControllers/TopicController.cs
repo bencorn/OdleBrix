@@ -32,7 +32,21 @@ namespace BUDLP.APIControllers
         [HttpPost("api/topics/get")]
         public JsonResult GetTopics([FromBody] GetTopicPayload payload)
         {
-            var topics = _ctx.Topics.Where(x => x.Language == payload.Language).ToList();
+            List<Topic> topics;
+
+            if (payload.Language == 1)
+            {
+                topics = _ctx.Topics.OrderBy(x => x.COrder).ToList();
+            }
+            else if(payload.Language == 2)
+            {
+                topics = _ctx.Topics.OrderBy(x => x.CPLUSOrder).ToList();
+            }
+            else
+            {
+                topics = _ctx.Topics.OrderBy(x => x.MATLABOrder).ToList();
+            }
+
             var result = JsonConvert.SerializeObject(topics);
 
             return new JsonResult(result);

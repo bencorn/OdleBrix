@@ -20,5 +20,8 @@ namespace BUDLP.Models.TopicModels
         public string TopicName { get; set; }
         public string PreReq { get; set; }
         public List<TopicModule> TopicModules { get; set; }
+        public int COrder { get; set; }
+        public int CPLUSOrder { get; set; }
+        public int MATLABOrder { get; set; }
     }
 }

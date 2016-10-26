@@ -11,14 +11,13 @@ namespace BUDLP.Models
     public class AuthenticatedUser : IdentityUser
     {
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public string FullName { get; set; }
         [Required]
         public bool IsStaff { get; set; }
         [Required]
         public bool IsActive { get; set; }
         [Required]
+        public int TargetLanguage { get; set; }
         public bool IsSuperUser { get; set; }
         public DateTime LastLogin { get; set; }
         public DateTime? DateJoined { get; set; }

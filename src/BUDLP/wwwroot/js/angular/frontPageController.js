@@ -40,11 +40,12 @@
     });
 
     // code for controller itself
-    function frontPageController($http, $timeout, $routeParams) {
+    function frontPageController($http, $timeout, $routeParams, $scope) {
 
         // Init all dropdowns to Semantic UI dropdown
         var vm = this;
         vm.UserProfile = {};
+        vm.UserProfile.TargetLanguage = 1;
 
         // Front-page login button toggle login modal
         $('.login-modal')
@@ -57,20 +58,20 @@
             $('.ui.target.language.dropdown')
                 .dropdown('set selected', '1')
             ;
+        });
 
-            var payload = { Language: "1" };
+        $scope.$watch('vm.UserProfile.TargetLanguage', function () {
+            $.blockUI({ message: '<div class="ui active dimmer"><div class="ui loader"></div></div>' });
+            var payload = { Language: vm.UserProfile.TargetLanguage };
 
             $http.post("/api/topics/get", payload)
                         .then(function (result) {
                             vm.Topics = JSON.parse(result.data);
 
                             $timeout(function () {
-                                $('.ui.dropdown.experience')
-                                .dropdown()
-                                ;
-
                                 $('.ui.dropdown.experience').dropdown('set selected', 'None');
                             })
+                            $.unblockUI();
                         },
                         function () {
 
@@ -78,14 +79,16 @@
                         .finally(function () {
 
                         });
-        });
+        })
 
         vm.CreateProfile = function(){
             var payload = {
                 FullName: vm.UserProfile.FullName,
                 Email: vm.UserProfile.Email,
                 Password: vm.UserProfile.Password,
-                ProfileTopics: vm.Topics}
+                ProfileTopics: vm.Topics,
+                TargetLanguage: vm.UserProfile.TargetLanguage
+            };
 
                 $http.post("/api/profile/create", payload)
                     .then(function (result) {

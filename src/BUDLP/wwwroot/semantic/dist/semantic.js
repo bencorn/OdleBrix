@@ -8557,7 +8557,7 @@ $.fn.embed.settings = {
           autoplay       : settings.autoplay,
           color          : settings.color || undefined,
           hq             : settings.hd,
-          jsapi          : settings.api,
+          jsapi          : 1,
           modestbranding : !settings.brandedUI
         };
       }

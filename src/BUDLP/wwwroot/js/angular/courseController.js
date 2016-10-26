@@ -40,13 +40,15 @@
         });
 
     // code for controller itself
-    function courseController($http, $timeout, $routeParams, $scope) {
+    function courseController($http, $timeout, $routeParams, $scope, $rootScope) {
 
         var vm = this;
 
+        $rootScope.videoFinished = false;
         vm.Module = {};
         vm.moduleId = $routeParams.moduleId;
         vm.contentModuleId = $routeParams.contentModuleId;
+        var player;
 
         $scope.$watchCollection('[vm.moduleId, vm.contentModuleId]', function () {
             var payload = { ModuleId: vm.moduleId, ContentModuleId: vm.contentModuleId }
@@ -58,6 +60,14 @@
 
                     $timeout(function () {
                         $('.ui.embed').embed();
+                        vm.videoEnd = false;
+
+                        var video = $('iframe')[0];
+                        player = new YT.Player(video, {
+                            events: {
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
                     })
                 },
                 function () {
@@ -68,6 +78,12 @@
                 });
             }
         });
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.ENDED) {
+                $('.content.module').addClass('ui dimmable dimmed');
+            }
+        }
 
         $(function () {
             // Load Course Topics Unique to Logged in User

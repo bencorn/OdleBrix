@@ -43,20 +43,21 @@
     function frontPageController($http, $timeout, $routeParams) {
 
         // Init all dropdowns to Semantic UI dropdown
-        $('.ui.dropdown')
-            .dropdown()
-        ;
+        var vm = this;
+        vm.UserProfile = {};
 
         // Front-page login button toggle login modal
         $('.login-modal')
             .modal('attach events', '.login-button')
         ;
 
-        var vm = this;
-        vm.UserProfile = {};
         vm.Topics = {};
 
         $(function () {
+            $('.ui.target.language.dropdown')
+                .dropdown('set selected', '1')
+            ;
+
             var payload = { Language: "1" };
 
             $http.post("/api/topics/get", payload)
@@ -64,9 +65,11 @@
                             vm.Topics = JSON.parse(result.data);
 
                             $timeout(function () {
-                                $('.ui.dropdown')
+                                $('.ui.dropdown.experience')
                                 .dropdown()
                                 ;
+
+                                $('.ui.dropdown.experience').dropdown('set selected', 'None');
                             })
                         },
                         function () {
@@ -90,7 +93,7 @@
                         $('.login-modal')
                             .modal('hide')
                         ;
-                        window.location.href = "/Course";
+                        window.location.href = "/course";
                     },
                     function () {
 

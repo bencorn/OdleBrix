@@ -1,4 +1,14 @@
 ﻿<div class="ui container">
-    <div class="ui embed" data-source="youtube" data-id="{{vm.Module.ModuleContent}}"></div>
+    <div class="content module">
+        <div class="ui simple dimmer">
+            <div class="content">
+                <div class="center">
+                    <h1 style="color:rgba(0, 0, 0, 0.95);">Want to enable this module?</h1>
+                    <checkbox class="ui fitted toggle topic" ng-model="x.ToLearn"></checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="ui embed" data-source="youtube" data-id="{{vm.Module.ModuleContent}}"></div>
+    </div>
     <h1 class="ui header">{{vm.Module.ModuleTitle}}</h1>
 </div>

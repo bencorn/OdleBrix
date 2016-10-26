@@ -1,14 +1,24 @@
 ﻿<div class="front-page">
     <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
-        <div style="margin-top: 4em;" class="ui text container">
-            <h1 class="ui inverted header">
-                Build Your Own Learning Experience
-            </h1>
+        <div style="margin-top: 4em;" class="ui container">
+            <div class="ui center aligned grid">
+                <h1 class="ui inverted header">
+                    Build Your Own Learning Experience in
+                </h1>
+                <div class="row">
+                    <div class="six wide column">
+                        <select ng-init="vm.UserProfile.TargetLanguage = 1" ng-model="vm.UserProfile.TargetLanguage" class="ui fluid target language dropdown">
+                            <option value="1">C</option>
+                            <option value="2">C++</option>
+                            <option value="3">MATLAB</option>
+                        </select>
+                    </div>
+                </div>               
+            </div>
         </div>
     </div>
 
     <div class="ui vertical profile-section center aligned celled grid">
-
         <div class="sixteen wide column">
             <table ng-hide="!vm.Topics" class="ui celled table">
                 <thead class="full-width">
@@ -26,7 +36,7 @@
                         </td>
                         <td>{{x.TopicName}}</td>
                         <td>
-                            <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown">
+                            <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown experience">
                                 <option value="0">None</option>
                                 <option value="1">C</option>
                                 <option value="2">C++</option>

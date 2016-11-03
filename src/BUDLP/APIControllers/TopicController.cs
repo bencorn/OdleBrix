@@ -29,6 +29,7 @@ namespace BUDLP.APIControllers
             _roleManager = roleManager;
         }
 
+        // Front page topics ordered by target language
         [HttpPost("api/topics/get")]
         public JsonResult GetTopics([FromBody] GetTopicPayload payload)
         {
@@ -52,6 +53,7 @@ namespace BUDLP.APIControllers
             return new JsonResult(result);
         }
 
+        // Load topic module content item
         [HttpPost("api/module/load")]
         public JsonResult LoadModule([FromBody] LoadModulePayload payload)
         {
@@ -71,6 +73,7 @@ namespace BUDLP.APIControllers
             return result;
         }
 
+        // Load all topics and topic modules
         [HttpGet("api/modules/get")]
         public async Task<JsonResult> GetProfileTopics()
         {
@@ -92,6 +95,7 @@ namespace BUDLP.APIControllers
             return new JsonResult(result);
         }
 
+        // Payload section
         public class GetTopicPayload
         {
             public int Language { get; set; }
@@ -103,6 +107,7 @@ namespace BUDLP.APIControllers
             public int ContentModuleId { get; set; }
         }
 
+        // Retrieve user currently logged in
         private Task<AuthenticatedUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
     }

@@ -44,6 +44,15 @@
 
         var vm = this;
 
+        vm.quiz = {
+                "QuizType": 0, "QuizOptions": [
+                { "QuizOption": "Numbers", "QuizOptionId": "1" },
+                { "QuizOption": "Strings", "QuizOptionId": "1" },
+                { "QuizOption": "Characters", "QuizOptionId": "1" },
+                { "QuizOption": "Booleans", "QuizOptionId": "1" }
+            ]
+        }
+
         $rootScope.videoFinished = false;
         vm.Module = {};
         vm.moduleId = $routeParams.moduleId;
@@ -82,6 +91,12 @@
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.ENDED) {
                 $('.content.module').addClass('ui dimmable dimmed');
+
+                $('.ui.checkbox').checkbox('enable')
+
+                //$('.quiz-overlay-close').click(function () {
+                //    $('.quiz.overlay-dimmer').dimmer('hide');
+                //});
             }
         }
 

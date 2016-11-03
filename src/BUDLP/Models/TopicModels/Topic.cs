@@ -23,5 +23,6 @@ namespace BUDLP.Models.TopicModels
         public int COrder { get; set; }
         public int CPLUSOrder { get; set; }
         public int MATLABOrder { get; set; }
+        public float TotalTime { get; set; }
     }
 }

@@ -1,14 +1,25 @@
 ﻿<div class="ui container">
     <div class="content module">
-        <div class="ui simple dimmer">
+        <div class="ui simple inverted quiz overlay-dimmer dimmer">
             <div class="content">
                 <div class="center">
-                    <h1 style="color:rgba(0, 0, 0, 0.95);">Want to enable this module?</h1>
-                    <checkbox class="ui fitted toggle topic" ng-model="x.ToLearn"></checkbox>
+                    <div class="quiz overlay">
+                        <!--<i class="remove icon quiz-overlay-close"></i>-->
+                        <h3 class="ui header" style="color: rgba(0,0,0,.87);">What can be stored in variables?</h3>
+                        <div class="fields" ng-include="vm.quiz.QuizType ? 'partials/quiz_checkbox.html' : 'partials/quiz_radio.html'">
+
+                        </div>
+                        <br />
+                        <button class="ui simple blue button">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="module control button right floated"><a class="module control button" href="#">Prev</a> | <a class="module control button" href="#">Next</a></div>
         <div class="ui embed" data-source="youtube" data-id="{{vm.Module.ModuleContent}}"></div>
     </div>
     <h1 class="ui header">{{vm.Module.ModuleTitle}}</h1>
+    <div>
+        {{vm.Module.ModuleDescription}}
+    </div>
 </div>

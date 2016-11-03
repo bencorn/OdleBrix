@@ -80,3 +80,40 @@
 .logo{
     width: 5.5em !important;
 }
+
+.quiz.overlay{
+    margin: auto;
+    max-width: 40%;
+    text-align: left;
+    display: block;
+}
+
+.quiz.overlay-dimmer{
+    background-color: rgba(255,255,255,0.97) !important;
+}
+
+.quiz.answer{
+    padding-bottom: 10px;
+}
+
+.quiz-overlay-close{
+    color: black !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin-top: 4px !important;
+}
+
+.quiz-overlay-close:hover{
+    color: #0a7cd7 !important;
+    transition: color 0.5s ease;
+    cursor: pointer;
+}
+
+.module.control.button{
+    margin-bottom: 10px !important;
+    text-align: right;
+    color: rgba(0,0,0,.95) !important;
+    font-weight: 300;
+    font-size: 16px;
+}

@@ -8,9 +8,10 @@ using BUDLP.Data;
 namespace BUDLP.Migrations
 {
     [DbContext(typeof(PlatformDbContext))]
-    partial class PlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161102214909_ModuleTime")]
+    partial class ModuleTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -95,13 +96,9 @@ namespace BUDLP.Migrations
 
                     b.Property<string>("ModuleContent");
 
-                    b.Property<string>("ModuleDescription");
-
                     b.Property<float>("ModuleTime");
 
                     b.Property<string>("ModuleTitle");
-
-                    b.Property<int?>("NextTopicModuleContentId");
 
                     b.Property<int>("TopicModuleContentType");
 

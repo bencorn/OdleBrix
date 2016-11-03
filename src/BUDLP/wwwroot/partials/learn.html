@@ -5,7 +5,7 @@
             <div class="title">
                 {{x.Topic.TopicName}}
                 <div ng-show="x.ToLearn" class="topic-time-remaining">
-                    Estimated time: 2h 35m
+                    Estimated time: {{x.Topic.TotalTime}} mins
                     <i class="chevron down icon"></i>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                                 <th>TOPIC</th>
                                 <th>REMAINING</th>
                                 <th>QUIZZES</th>
-                                <th>GRADE</th>
+                                <th>COMPLETED</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,13 +34,10 @@
                                     <a ng-href="/course/{{x.TopicId}}/{{t.TopicModuleId}}">{{t.TopicModuleTitle}}</a>
                                 </td>
                                 <td class="">
-                                    <a ng-href="/course/{{x.TopicId}}/{{t.TopicModuleId}}">6h 34 min left</a>
+                                    <a ng-href="/course/{{x.TopicId}}/{{t.TopicModuleId}}">{{t.ModuleTime}}</a>
                                 </td>
-                                <td class="">
-                                    <a ng-repeat="content in t.TopicModuleContent | filter: {TopicModuleContentType: 0}">
-                                        {{content.ModuleTitle}}
-                                        <br />
-                                    </a>
+                                <td>
+                                    {{(t.TopicModuleContent | filter:{TopicModuleContentType:0}).length}}
                                 </td>
                                 <td>65%</td>
                             </tr>

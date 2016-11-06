@@ -10,6 +10,8 @@ namespace BUDLP.Models.TopicModels
         public int TopicModuleId { get; set; }
         public int TopicId { get; set; }
         public string TopicModuleTitle { get; set; }
+        public int NextTopicModuleId { get; set; }
+        public int PrevTopicModuleId { get; set; }
         public List<TopicModuleContent> TopicModuleContent { get; set; }
     }
 }

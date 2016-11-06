@@ -17,6 +17,8 @@ namespace BUDLP.Models.TopicModels
         public float ModuleTime { get; set; }
         public int TopicModuleId { get; set; }
         public int? NextTopicModuleContentId { get; set; }
+        public int PrevTopicModuleContentId { get; set; }
+        public int QuizId { get; set; }
         [JsonIgnore]
         public TopicModule TopicModule { get; set; }
     }

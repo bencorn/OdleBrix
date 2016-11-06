@@ -12,8 +12,11 @@
             templateUrl: '/partials/module.html',
             controllerAs: "vm",
             controller: 'courseController'
-
-
+        });
+        $routeProvider.when('/course/:moduleId/:contentModuleId/:topicContentModuleId', {
+            templateUrl: '/partials/module.html',
+            controllerAs: "vm",
+            controller: 'courseController'
         });
 
         $locationProvider.html5Mode(true);

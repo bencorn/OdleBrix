@@ -53,6 +53,25 @@ namespace BUDLP.APIControllers
             return new JsonResult(result);
         }
 
+        [HttpPost("api/topics/topicmodules")]
+        public JsonResult LoadTopicModules([FromBody] LoadTopicModuleContentPayload payload)
+        {
+            var topicModules = _ctx.TopicModuleContent.Where(x => x.TopicModuleId == payload.TopicModuleId).ToList();
+
+            JsonResult result;
+
+            if (topicModules != null)
+            {
+                result = new JsonResult(JsonConvert.SerializeObject(topicModules));
+            }
+            else
+            {
+                result = new JsonResult(HttpStatusCode.BadRequest);
+            }
+
+            return result;
+        }
+
         // Load topic module content item
         [HttpPost("api/module/load")]
         public JsonResult LoadModule([FromBody] LoadModulePayload payload)
@@ -105,6 +124,11 @@ namespace BUDLP.APIControllers
         {
             public int ModuleId { get; set; }
             public int ContentModuleId { get; set; }
+        }
+
+        public class LoadTopicModuleContentPayload
+        {
+            public int TopicModuleId { get; set; }
         }
 
         // Retrieve user currently logged in

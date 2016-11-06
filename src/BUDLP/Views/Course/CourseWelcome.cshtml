@@ -13,7 +13,6 @@
 
 </head>
 
-
 <body ng-app="dlp" ng-controller="courseController as vm">
     <div class="ui fixed borderless menu">
         <div class="ui container">
@@ -26,65 +25,17 @@
         </div>
     </div>
 
-    <div class="ui vertical left visible sidebar borderless menu">
-        <a ng-repeat="x in vm.Topics" class="item">
+    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == true">
+        <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" ng-repeat="x in vm.ContentModules" class="item">
+            {{x.ModuleTitle}}
+        </a>
+    </div>
+    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == false">
+        <a href="/course/{{x.Topic.TopicId}}/{{x.Topic.TopicModules[0].TopicModuleId}}" ng-repeat="x in vm.Topics" class="item">
             {{x.Topic.TopicName}}
         </a>
     </div>
     <div class="pusher">
         <div ng-view></div>
-        @*<div class="ui container">
-            <h1 class="ui centered course-intro header">Introduction to Computer Programming</h1>
-            <div ng-view>
-
-            </div>
-            <div ng-repeat="x in vm.Topics">
-                <div class="ui styled fluid accordion">
-                    <div class="title">
-                        {{x.Topic.TopicName}}
-                        <div ng-show="x.ToLearn" class="topic-time-remaining">
-                            Estimated time: 2h 35m
-                            <i class="chevron down icon"></i>
-                        </div>
-                    </div>
-                    <div ng-class="(!x.ToLearn) ? 'ui dimmable dimmed' : ''" class="content">
-                        <div class="ui simple dimmer">
-                            <div class="content">
-                                <div class="center">
-                                        <h1 style="color:rgba(0, 0, 0, 0.95);">Want to enable this module?</h1>
-                                        <checkbox class="ui fitted toggle topic" ng-model="x.ToLearn"></checkbox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="transition visible" style="display: block !important;">
-                            <table class="ui selectable very basic table">
-                                <thead>
-                                    <tr>
-                                        <th>TOPIC</th>
-                                        <th>REMAINING</th>
-                                        <th>QUIZZES</th>
-                                        <th>GRADE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="t in x.Topic.TopicModules">
-                                        <td class= course-topic heading">{{t.TopicModuleTitle}}</td>
-                                        <td>6h 34 min left</td>
-                                        <td>
-                                            <a ng-href="#/learn/10/20" ng-repeat="content in t.TopicModuleContent">
-                                                {{content.ModuleTitle}}
-                                                <br />
-                                            </a>
-                                        </td>
-                                        <td>65%</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>                        
-                    </div>
-                </div>
-                <br />
-            </div>
-        </div>*@
     </div>
 </body>

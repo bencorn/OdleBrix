@@ -45,24 +45,51 @@
         var vm = this;
 
         vm.quiz = {
-                "QuizType": 0, "QuizOptions": [
+                "QuizType": 0, "QuizAnswerId": 2, "QuizOptions": [
                 { "QuizOption": "Numbers", "QuizOptionId": "1" },
-                { "QuizOption": "Strings", "QuizOptionId": "1" },
-                { "QuizOption": "Characters", "QuizOptionId": "1" },
-                { "QuizOption": "Booleans", "QuizOptionId": "1" }
+                { "QuizOption": "Strings", "QuizOptionId": "2" },
+                { "QuizOption": "Characters", "QuizOptionId": "3" },
+                { "QuizOption": "Booleans", "QuizOptionId": "4" }
             ]
         }
 
         $rootScope.videoFinished = false;
+        $rootScope.topicModule = true;
+        $rootScope.moduleId = $routeParams.moduleId;
+        $rootScope.contentModuleId = $routeParams.contentModuleId; // topic module
+        $rootScope.topicContentModuleId = $routeParams.topicContentModuleId; // topic module content
+
         vm.Module = {};
-        vm.moduleId = $routeParams.moduleId;
-        vm.contentModuleId = $routeParams.contentModuleId;
+        vm.moduleId = $routeParams.moduleId; // topic
+        vm.contentModuleId = $routeParams.contentModuleId; // topic module
+        vm.topicContentModuleId = $routeParams.topicContentModuleId; // topic module content
+        vm.ContentModules = {};
+
         var player;
 
         $scope.$watchCollection('[vm.moduleId, vm.contentModuleId]', function () {
             var payload = { ModuleId: vm.moduleId, ContentModuleId: vm.contentModuleId }
+            
+            if (vm.moduleId !== undefined && vm.contentModuleId !== undefined) {
+                $rootScope.topicModule = false;
+                vm.topicModule = false;
+            }
+            else {
+            }
 
             if (vm.moduleId !== undefined) {
+                var topicModuleLoad = { TopicModuleId: vm.contentModuleId }
+                $http.post("/api/topics/topicmodules", topicModuleLoad)
+                .then(function (result) {
+                    $scope.$parent.vm.ContentModules = JSON.parse(result.data);
+                },
+                function () {
+
+                })
+                .finally(function () {
+
+                });
+
                 $http.post("/api/module/load", payload)
                 .then(function (result) {
                     vm.Module = JSON.parse(result.data);
@@ -86,6 +113,10 @@
 
                 });
             }
+        });
+
+        $scope.$watchCollection('[vm.topicContentModuleId]', function () {
+
         });
 
         function onPlayerStateChange(event) {

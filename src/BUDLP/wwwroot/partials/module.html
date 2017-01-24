@@ -6,7 +6,11 @@
                     <div ng-hide="vm.Quizzes.length === 0" class="quiz overlay">
                         <!--<i class="remove icon quiz-overlay-close"></i>-->
                         <div class="ui quiz menu">
-                            <a style="color: #1c262f !important;" ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="quiz-question item" data-tab="{{q.QuizId}}">Question {{$index + 1}} of {{vm.Quizzes.length}}</a>
+                            <a style="color: #1c262f !important;" ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="quiz-question item" data-tab="{{q.QuizId}}">
+                                <i style="color: rgb(0, 179, 228)" ng-show="q.Correct === true" class="check circle icon"></i>
+                                <i style="color: #F44336" ng-show="q.Correct === false" class="remove circle icon"></i>
+                                Question {{$index + 1}} of {{vm.Quizzes.length}}
+                            </a>
                         </div>
                         <div ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="ui tab segment" data-tab="{{q.QuizId}}">
                             <h3 class="ui header" style="color: rgba(0,0,0,.87);">{{q.QuestionText}}</h3>
@@ -18,17 +22,6 @@
                             <br /><br />
                             <span style="color: #1c262f !important;" ng-show="q.Correct === false">Not quite, try again.</span>
                             <span style="color: #1c262f !important;" ng-show="q.Correct === true">Correct! Good job. {{q.Remark}}</span>
-                            <!--<div ng-show="vm.Quiz.Correct">
-                                <h1 class="ui header">Good job! You got it right!</h1>
-                                <a href=/course{{vm.Module.NextTopicModuleContentUrl}} class="ui basic blue button">Next Module</a>
-                                <button ng-click="vm.replayVideo()" class="ui blue button">Replay Video</button>
-                            </div>
-                            <div ng-show="!vm.Quiz.Correct && vm.Quiz.ShowDialog">
-                                <h1 class="ui header">Not quite, let's go back and review.</h1>
-                                <button ng-click="vm.replayVideoMarker()" class="ui basic blue button">Replay at Quiz Answer</button>
-                                <button ng-click="vm.replayVideo()" class="ui blue button">Replay Video</button>
-                                <button ng-click="vm.reloadQuiz()" class="ui basic blue button">Restart Quiz</button>
-                            </div>-->
                         </div>
                     </div>
                 </div>

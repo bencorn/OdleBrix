@@ -5,41 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BUDLP</title>
 
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
 
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/semantic/dist/semantic.min.js"></script>
+    <script src="~/js/front-page.js"></script>
+    <script src="~/js/site.js"></script>
 
 </head>
 <body class="pushable">
-    <div class="ui fixed menu">
+    <div class="ui borderless fixed menu">
         <div class="ui container">
-            <a href="#" class="header item">
-                @*<img class="logo" src="assets/images/logo.png">*@
-                BUDLP
-            </a>
-            <div class="header item">
-                <div class="ui left action input">
-                    <button class="ui basic labeled icon button">
-                        <i class="unordered list icon"></i>
-                        Catalog
-                    </button>
-                    <input type="text" placeholder="Search courses" />
-                </div>
+            <div class="item">
+                <img class="ui tiny image" src="https://www.dropbox.com/s/obn44rtzbq21x39/odlebrix_3_400x84.png?dl=1">
             </div>
-            <a class="header item" href="#">About</a>
-            <a class="header item" href="#">Log In</a>
             <div class="right header item">
-                <button class="ui blue button">
-                    Sign Up
-                </button>
+                <a href="/Account/Login" class="ui blue sign-in button">
+                    Sign In
+                </a>
             </div>
         </div>
     </div>
 
     <div class="pusher">
         @RenderBody()
+
         @*<hr />
         <footer>
             <p>&copy; 2016 - BUDLP</p>

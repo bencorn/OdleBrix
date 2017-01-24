@@ -1,12 +1,8 @@
-﻿using BUDLP.Data.Migrations;
+﻿using BUDLP.Models;
 using BUDLP.Models.AuthUserModels;
 using BUDLP.Models.TopicModels;
 using BUDLP.Models.TopicQuizzes;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BUDLP.Data
 {
@@ -23,5 +19,8 @@ namespace BUDLP.Data
         public DbSet<TopicModuleContent> TopicModuleContent { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<QuizOption> QuizOptions { get; set; }
+        public DbSet<UserQuizResponse> UserQuizResponses { get; set; }
+        public DbSet<UserLearningState> UserLearningStates { get; set; }
+        public DbSet<TopicModuleState> TopicModuleStates { get; set; }
     }
 }

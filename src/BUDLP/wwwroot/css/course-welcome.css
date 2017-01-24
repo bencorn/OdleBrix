@@ -1,5 +1,37 @@
 ﻿.pusher{
-    margin-top: 120px !important;
+    top: 100px !important;
+    position: relative !important;
+}
+
+.classroom.menu{
+    background-color: #1c262f !important;
+    height: 68px;
+}
+
+.topic.title.header{
+    margin: 0 auto !important;
+    color: white;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    margin-top: 0 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.title.header .icon.angle{
+    font-size:36px !important;
+    color: rgb(0, 179, 228);
+    cursor: pointer;
+}
+
+.title.header .left.angle{
+    margin-right: 0px !important;
+}
+
+.title.header .right.angle{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .container{
@@ -8,7 +40,7 @@
 }
 
 .sidebar.menu.overlay{
-    margin-top: 49px !important;
+    top: 49px !important;
     box-shadow: none !important;
 }
 
@@ -17,7 +49,7 @@
 }
 
 .ui.sidebar.menu{
-    margin-top: 63px !important;
+    top: 68px !important;
 }
 
 .ui.sidebar.visible ~ .pusher {
@@ -68,11 +100,6 @@
     float: right;
 }
 
-.chevron.down.icon{
-    padding-left: 20px;
-    padding-right: 10px;
-}
-
 .course-intro.header{
     margin-bottom: 40px;
 }
@@ -116,4 +143,171 @@
     color: rgba(0,0,0,.95) !important;
     font-weight: 300;
     font-size: 16px;
+}
+
+.cs-indicator.icon{
+    display: inline-block;
+    left: -16px;
+    box-sizing: border-box;
+    position: relative;
+    margin-right: -6px;
+    float: left !important;
+    top: -6px;
+    font-size: 24px;
+}
+
+.youtube.play.icon.greyed{
+    color: rgb(164, 169, 172) !important;
+}
+
+.youtube.play.icon.blue{
+    color: rgb(0, 179, 228) !important;
+}
+
+.copy.icon.greyed{
+    color: rgb(164, 169, 172) !important;
+
+}
+.copy.icon.blue{
+    color: rgb(0, 179, 228) !important;
+}
+
+.item > .cs-indicator.bar {
+    width: 4px;
+    height: 100%;
+    top: 34px;
+    left: 26px !important;
+    display: inline-block;
+    position: absolute;
+}
+
+.item > .cs-indicator.bar.greyed {
+    background-color: rgb(164, 169, 172) !important;
+}
+
+.item > .cs-indicator.bar.blue {
+    background-color: rgb(0, 179, 228) !important;
+}
+
+.item > .cs-indicator.bar-t.greyed {
+    background-color: rgb(164, 169, 172) !important;
+}
+
+.item > .cs-indicator.bar-t.blue {
+    background-color: rgb(0, 179, 228) !important;
+}
+
+.item > .cs-indicator.bar-top.greyed {
+    background-color: rgb(164, 169, 172) !important;
+}
+
+.item > .cs-indicator.bar-top.blue {
+    background-color: rgb(0, 179, 228) !important;
+}
+
+.item > .cs-indicator.bar-top-t.greyed {
+    background-color: rgb(164, 169, 172) !important;
+}
+
+.item > .cs-indicator.bar-top-t.blue {
+    background-color: rgb(0, 179, 228) !important;
+}
+
+.item > .cs-indicator.bar-top{
+    width: 4px;
+    height: 17px;
+    top: 0;
+    left: 26px !important;
+    display: inline-block;
+    position: absolute;
+}
+
+.item > .cs-indicator.bar-t {
+    width: 4px;
+    height: 100%;
+    top: 36px;
+    left: 26px !important;
+    display: inline-block;
+    position: absolute;
+}
+
+.item > .cs-indicator.bar-top-t{
+    width: 4px;
+    height: 17px;
+    top: 0;
+    left: 26px !important;
+    display: inline-block;
+    position: absolute;
+}
+
+.cs-indicator-last{
+    background-color: transparent !important;
+}
+
+.cs-indicator-first{
+    background-color: transparent !important;
+}
+
+._text-content-module{
+    font-size: 18px !important;
+}
+
+._text-content-module li{
+    line-height: 1.3em;
+}
+
+.content.container{
+    position: relative !important;
+}
+
+._module-nav-arrow{
+    line-height: 1 !important;
+}
+
+.ui.container{
+    max-width: 1564px !important;
+    width: auto !important;
+}
+
+._sidebar-accordian-title{
+    color: #02b3e4 !important;
+    padding-left: 18px !important;
+    padding-top: 14px !important;
+    font-size: 16px !important;
+    background: rgb(36, 50, 62) !important;
+    padding-bottom: 14px !important;
+    border-top: 1px solid #32383F !important;
+}
+
+._sidebar-accordian-icon{
+    float: right;
+    padding-right: 25px;
+}
+
+.ui.accordion:not(.styled) .title~.content:not(.ui){
+    padding: 0 !important;
+}
+
+.ui.menu a.item:hover{
+    color: white !important;
+}
+
+.ui.menu a.item{
+    color: rgba(255,255,255,.75) !important;
+}
+
+.ui.vertical.menu {
+    background: rgb(46, 61, 73);
+}
+
+.angle.left.icon{
+    float: left !important;
+    margin-left: -.25em !important;
+    margin-top: -.12em !important;
+    color: rgb(5, 167, 212);
+    font-size: 25px !important;
+}
+
+.field.quiz.answer{
+    color:#1c262f !important;
 }

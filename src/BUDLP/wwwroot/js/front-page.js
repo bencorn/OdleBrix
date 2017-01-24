@@ -1,25 +1,20 @@
 ﻿$(function () {
+    $('.sign-in.process').click(function () {
+        var username = $('.email-field').val();
+        var password = $('.password-field-inp').val();
 
+        var data = { Username: username, Password: password };
 
-
-    // Front-page topic toggle all
-    $('.master.topic.checkbox')
-        .checkbox({
-      // check all children
-      onChecked: function () {
-          var
-            $childCheckbox = $('.table .checkbox');
-          ;
-          $childCheckbox.checkbox('check');
-      },
-      // uncheck all children
-      onUnchecked: function () {
-          var
-            $childCheckbox = $('.table .checkbox');
-          ;
-          $childCheckbox.checkbox('uncheck');
-      }
-  })
-    ;
-});
+        $.ajax({
+            url: 'api/user/login',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (data) {
+                window.location.replace(data);
+            }
+        });
+    });
+})
 

@@ -1,25 +1,57 @@
-﻿<div class="ui container">
+﻿<div class="ui content container">
     <div class="content module">
         <div class="ui simple inverted quiz overlay-dimmer dimmer">
             <div class="content">
                 <div class="center">
-                    <div class="quiz overlay">
+                    <div ng-hide="vm.Quizzes.length === 0" class="quiz overlay">
                         <!--<i class="remove icon quiz-overlay-close"></i>-->
-                        <h3 class="ui header" style="color: rgba(0,0,0,.87);">What can be stored in variables?</h3>
-                        <div class="fields" ng-include="vm.quiz.QuizType ? 'partials/quiz_checkbox.html' : 'partials/quiz_radio.html'">
-
+                        <div class="ui quiz menu">
+                            <a style="color: #1c262f !important;" ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="quiz-question item" data-tab="{{q.QuizId}}">Question {{$index + 1}} of {{vm.Quizzes.length}}</a>
                         </div>
-                        <br />
-                        <button class="ui simple blue button">Submit</button>
+                        <div ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="ui tab segment" data-tab="{{q.QuizId}}">
+                            <h3 class="ui header" style="color: rgba(0,0,0,.87);">{{q.QuestionText}}</h3>
+                            <div class="fields" ng-include="q.QuizType ? 'partials/quiz_checkbox.html' : 'partials/quiz_radio.html'">
+                            </div>
+                            <br />
+                            <button ng-click="vm.CheckQuizAnswer(q)" class="ui simple green button">Check Answer</button>
+                            <a ng-href="{{NextModuleLink}}" ng-show="$last" class="ui simple button">Next Module</a>
+                            <br /><br />
+                            <span style="color: #1c262f !important;" ng-show="q.Correct === false">Not quite, try again.</span>
+                            <span style="color: #1c262f !important;" ng-show="q.Correct === true">Correct! Good job. {{q.Remark}}</span>
+                            <!--<div ng-show="vm.Quiz.Correct">
+                                <h1 class="ui header">Good job! You got it right!</h1>
+                                <a href=/course{{vm.Module.NextTopicModuleContentUrl}} class="ui basic blue button">Next Module</a>
+                                <button ng-click="vm.replayVideo()" class="ui blue button">Replay Video</button>
+                            </div>
+                            <div ng-show="!vm.Quiz.Correct && vm.Quiz.ShowDialog">
+                                <h1 class="ui header">Not quite, let's go back and review.</h1>
+                                <button ng-click="vm.replayVideoMarker()" class="ui basic blue button">Replay at Quiz Answer</button>
+                                <button ng-click="vm.replayVideo()" class="ui blue button">Replay Video</button>
+                                <button ng-click="vm.reloadQuiz()" class="ui basic blue button">Restart Quiz</button>
+                            </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="module control button right floated"><a class="module control button" href="/course/{{vm.moduleId}}/{{vm.contentModuleId}}/{{vm.Module.PrevTopicModuleContentId}}">Prev</a> | <a class="module control button" href="/course/{{vm.moduleId}}/{{vm.contentModuleId}}/{{vm.Module.NextTopicModuleContentId}}">Next</a></div>
-        <div class="ui embed" data-source="youtube" data-id="{{vm.Module.ModuleContent}}"></div>
+        <div ng-show="vm.Module.TopicModuleContentType == 1" class="ui embed" data-source="youtube" data-id="{{vm.Module.ModuleContent}}"></div>
     </div>
-    <h1 class="ui header">{{vm.Module.ModuleTitle}}</h1>
-    <div>
-        {{vm.Module.ModuleDescription}}
+    <div class="_content-module-info" ng-show="vm.Module.TopicModuleContentType == 2">
+        <h2 class="ui header">{{vm.Module.ModuleTitle}}</h2>
+        <div>
+            {{vm.Module.ModuleDescription}}
+        </div>
+    </div>
+
+    <div class="_content-module-forum ui secondary segment" ng-show="vm.Module.TopicModuleContentType == 1">
+        <h4>Have questions? Head to the <a href="http://community.odlebrix.com/">forums</a> for discussion with the community.</h4>
+    </div>
+
+    <div class="ui secondary segment _text-content-module" ng-show="vm.Module.TopicModuleContentType == 2">
+        <div ng-bind-html="vm.Module.ModuleContent"></div>
+    </div>
+
+    <div class="ui secondary segment _text-content-module" ng-show="vm.Module.TopicModuleContentType == 3">
+        <iframe style="width: 100%" ng-src="{{vm.Module.ModuleContentUrl}}" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </div>
 </div>

@@ -1,12 +1,12 @@
-﻿<div ng-repeat="q in vm.quiz.QuizOptions">
+﻿<div ng-repeat="a in q.QuizOptions">
     <div class="field quiz answer">
-        <div class="ui radio checkbox">
-            <input name="quizOption" ng-model="q.QuizOptionId" type="radio" checked="" class="hidden">
-            <label>{{q.QuizOption}}</label>
-        </div>
+        <!--<div class="ui radio checkbox">
+            <input type="radio" name="QuizAnswer" ng-model="vm.Quiz.SelectedAnswer[q.QuizOptionId]" ng-change="" value="{{q.QuizOptionId}}">
+            <label for="{{'QuizOpt-' + q.QuizOptionId}}">{{q.QuizOptionText}}</label>
+        </div>-->
+        <label>
+            <input type="radio" ng-model="q.SelectedAnswer" ng-value="a.QuizOptionId" />
+            {{a.QuizOptionText}}
+        </label>
     </div>
 </div>
-
-<script>
-    $('.ui.checkbox').checkbox('enable')
-</script>

@@ -7,95 +7,100 @@
     <link rel="stylesheet" href="~/css/front-page.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="~/js/angular-wizard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/angular-wizard.min.css">
     <script src="~/lib/angular/angular-route.min.js"></script>
+    <script src="~/lib/angular/angular-sanitize.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
+    <script src="~/js/waterpipe.js"></script>
     <script src="~/js/jquery.blockUI.js"></script>
     <script src="~/js/angular/dlp.js"></script>
 </head>
 
 <div class="vessel" ng-app="dlp" ng-controller="frontPageController as vm">
     <div class="front-page">
-        <div style="min-height: 200px;" class="ui inverted vertical intro-section center aligned segment">
-            <div style="margin-top: 4em;" class="ui container">
-                <div class="ui center aligned grid">
-                    <h1 class="ui inverted header">
-                        Build Your Own Learning Experience in
-                    </h1>
-                    <div class="row">
-                        <div class="six wide column">
-                            <select ng-init="vm.UserProfile.TargetLanguage = 1" ng-model="vm.UserProfile.TargetLanguage" class="ui fluid target language dropdown">
-                                <option value="1">C</option>
-                                <option value="2">C++</option>
-                                <option value="3">MATLAB</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+        <div id="wavybg-wrapper" class="ui center aligned segment intro-section">
+            <canvas>Your browser does not support HTML5 canvas.</canvas>
+            <div class="_overlay-container">
+                <div class="_overlay"></div>
             </div>
+            <h1 class="ui center aligned inverted welcome header">
+                Learn to Code through a Fully Customized Curriculum
+            </h1>
         </div>
+        <div style="clear:both"></div>
 
         <div class="ui vertical profile-section center aligned celled grid">
             <div class="sixteen wide column">
-                <table ng-hide="!vm.Topics" class="ui celled table">
-                    <thead class="full-width">
-                        <tr>
-                            <th>Learn</th>
-                            <th>Topic</th>
-                            <th class="five wide">Previously Completed Topic In</th>
-                            <th>Prerequisite(s)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="x in vm.Topics">
-                            <td class="collapsing">
-                                <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
-                            </td>
-                            <td>{{x.TopicName}}</td>
-                            <td>
-                                <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown experience">
-                                    <option value="0">None</option>
-                                    <option value="1">C</option>
-                                    <option value="2">C++</option>
-                                    <option value="3">MATLAB</option>
-                                </select>
-                            </td>
-                            <td>{{x.PreReq}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="ui vertical masthead center aligned grid">
-            <button class="ui blue button login-button">Create Profile</button>
-        </div>
-
-        <div class="ui small basic modal transition login-modal">
-            <h1 class="ui header login-header">
-                Create Your Account
-            </h1>
-            <div class="ui segment login-segment">
-                <form class="ui form">
-                    <div class="field">
-                        <input ng-model="vm.UserProfile.FullName" class="name-field" type="text" placeholder="Full Name" />
-                    </div>
-                    <div class="field">
-                        <input ng-model="vm.UserProfile.Email" class="email-field" type="text" placeholder="Email" />
-                    </div>
-                    <div class="field">
-                        <input ng-model="vm.UserProfile.Password" type="password" placeholder="Password" />
-                    </div>
-
-                    <button ng-click="vm.CreateProfile()" class="ui fluid blue sign-up button">Sign Up</button>
-
-                </form>
-
-                <div class="sign-up-terms">
-                    By signing up to create an account I accept BUDLP
-                    <br />
-                    Terms of Use and Privacy Policy.
+                <h1 ng-show="vm.GetStarted == undefined" class="ui header">Are you ready to start learning? Sign up now.</h1>
+                <h3 ng-show="vm.GetStarted == undefined" class="ui header">Answer a few questions to get started.</h3>
+                <button ng-show="vm.GetStarted == undefined" ng-click="vm.GetStarted = true" class="ui huge orange button _continue-button">GET STARTED</button>
+                <div class="ui row" ng-show="vm.GetStarted == true">
+                    <wizard on-finish="finishedWizard()">
+                        <wz-step wz-title="Language">
+                            <h2 class="ui header">What language do you want to learn?</h2>
+                            <h3 class="ui header">Don't worry, you can change this later if you'd like.</h3>
+                            <div class="ui center aligned container">
+                                <div class="ui six wide column">
+                                    <select ng-init="vm.UserProfile.TargetLanguage = 1" ng-model="vm.UserProfile.TargetLanguage" class="ui target language dropdown">
+                                        <option value="1">C</option>
+                                        <option value="2">C++</option>
+                                        <option value="3">MATLAB</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <input class="ui large orange button" type="submit" wz-next value="Continue" />
+                        </wz-step>
+                        <wz-step wz-title="Experience">
+                            <h2>Do you have past experience in C/C++/MATLAB?</h2>
+                            <h3>Let us know what you've done before so we can build a course just for you!</h3>
+                            <table ng-hide="!vm.Topics" class="ui celled table">
+                                <thead class="full-width">
+                                    <tr>
+                                        <th>Learn</th>
+                                        <th>Topic</th>
+                                        <th class="five wide">Previously Completed Topic In</th>
+                                        <th>Prerequisite(s)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in vm.Topics">
+                                        <td class="collapsing">
+                                            <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
+                                        </td>
+                                        <td>{{x.TopicName}}</td>
+                                        <td>
+                                            <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown experience">
+                                                <option value="0">None</option>
+                                                <option value="1">C</option>
+                                                <option value="2">C++</option>
+                                                <option value="3">MATLAB</option>
+                                            </select>
+                                        </td>
+                                        <td>{{x.PreReq}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input class="ui large orange button" type="submit" wz-next value="All done" />
+                        </wz-step>
+                        <wz-step wz-title="Register">
+                            <h2>You're almost done!</h2>
+                            @*<div class="ui vertical masthead center aligned grid">
+                                <button class="ui blue button login-button">Create Profile</button>
+                            </div>*@
+                            <div class="ui center aligned container">
+                                <div ng-show="vm.UserProfile.PasswordWarning !== undefined" class="ui error message">{{vm.UserProfile.PasswordWarning}}</div>
+                                <div class="ui form">
+                                    <input ng-model="vm.UserProfile.FullName" class="eight wide register field" autofocus placeholder="Full Name" />
+                                    <input ng-model="vm.UserProfile.Email" class="eight wide register field"  placeholder="Email" />
+                                    <input ng-model="vm.UserProfile.Password" type="password" class="eight wide password register field" placeholder="Password" />
+                                </div>
+                            </div>
+                            <button ng-click="vm.CreateProfile()" class="ui large orange button" wz-next>Sign Up Now</button>
+                        </wz-step>
+                    </wizard>
                 </div>
-
             </div>
         </div>
 

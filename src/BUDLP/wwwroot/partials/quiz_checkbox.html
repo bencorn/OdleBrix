@@ -1,8 +1,11 @@
-﻿<div ng-repeat="q in vm.quiz.QuizOptions">
+﻿<div ng-repeat="a in q.QuizOptions">
     <div class="field quiz answer">
-        <div class="ui checkbox">
-            <input ng-model="q.QuizOptionId" type="checkbox" class="hidden">
-            <label>{{q.QuizOption}}</label>
-        </div>
+        <!--<div class="ui checkbox">
+            <input ng-model="vm.Quiz.SelectedAnswer[q.QuizOptionId]" type="checkbox" class="hidden">
+            <label>{{q.QuizOptionText}}</label>
+        </div>-->
+        <checkbox style="color: #1c262f !important;" checked="false" ng-model="q.Checked[a.QuizOptionId]"></checkbox>
+        <label style="color: #1c262f !important;">{{a.QuizOptionText}}</label>
+        <br />
     </div>
 </div>

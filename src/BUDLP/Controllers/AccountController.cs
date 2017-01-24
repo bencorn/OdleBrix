@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 using BUDLP.Models;
 using BUDLP.Models.AccountViewModels;
 using BUDLP.Services;
+using System.Text;
+using System.Collections.Specialized;
+using Microsoft.Extensions.Primitives;
 
 namespace BUDLP.Controllers
 {
@@ -41,7 +44,7 @@ namespace BUDLP.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            return PartialView();
         }
 
         //
@@ -60,22 +63,22 @@ namespace BUDLP.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("/course");
                 }
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
-                    return View("Lockout");
+                    return PartialView("Lockout");
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
+                    return PartialView(model);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return PartialView(model);
         }
 
         //
@@ -237,7 +240,72 @@ namespace BUDLP.Controllers
         public IActionResult ResetPasswordConfirmation()
         {
             return View();
-        }      
+        }
+
+        [Authorize]
+        public async Task<ActionResult> DiscourseLogin()
+        {
+            if (string.IsNullOrEmpty(Request.Query["sso"]) || string.IsNullOrEmpty(Request.Query["sig"]))
+                return Content("Invalid");
+
+            string ssoSecret = "LTOyrp5plB!LTOyrp5plB!"; //must match sso_secret in discourse settings
+
+            string sso = Request.Query["sso"];
+            string sig = Request.Query["sig"];
+
+
+            string checksum = getHash(sso, ssoSecret);
+            if (checksum != sig)
+                return Content("Invalid");
+
+            byte[] ssoBytes = Convert.FromBase64String(sso);
+            string decodedSso = Encoding.UTF8.GetString(ssoBytes);
+
+            Dictionary<string, StringValues> nvc = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(decodedSso);
+
+            string nonce = nvc["nonce"];
+
+            //TODO: Add your own get user information
+            //Ensure user is logged in by adding the [Authorize]   
+            //Attribute to this controller method and validate the
+            //user has permission to access the forum      
+
+            //string email = "testuser@test.com";
+            //string username = "testuser";
+            //string name = "Test User";
+            //string externalId = "21";
+
+            var user = await GetCurrentUserAsync();
+
+            string returnPayload = "nonce=" + System.Net.WebUtility.UrlEncode(nonce) +
+                                    "&email=" + System.Net.WebUtility.UrlEncode(user.Email) +
+                                    "&external_id=" + System.Net.WebUtility.UrlEncode(user.Id) +
+                                    "&username=" + System.Net.WebUtility.UrlEncode(user.UserName) +
+                                    "&name=" + System.Net.WebUtility.UrlEncode(user.FullName);
+
+            string encodedPayload = Convert.ToBase64String(Encoding.UTF8.GetBytes(returnPayload));
+            string returnSig = getHash(encodedPayload, ssoSecret);
+
+            string redirectUrl = "http://community.odlebrix.com/session/sso_login?sso=" + encodedPayload + "&sig=" + returnSig;
+
+            return Redirect(redirectUrl);
+        }
+
+        public string getHash(string payload, string ssoSecret)
+        {
+            var encoding = new System.Text.UTF8Encoding();
+            byte[] keyBytes = encoding.GetBytes(ssoSecret);
+
+            System.Security.Cryptography.HMACSHA256 hasher = new System.Security.Cryptography.HMACSHA256(keyBytes);
+
+            byte[] bytes = encoding.GetBytes(payload);
+            byte[] hash = hasher.ComputeHash(bytes);
+
+            string ret = string.Empty;
+            foreach (byte x in hash)
+                ret += String.Format("{0:x2}", x);
+            return ret;
+        }
 
         #region Helpers
 
@@ -267,5 +335,8 @@ namespace BUDLP.Controllers
         }
 
         #endregion
+
     }
+
+
 }

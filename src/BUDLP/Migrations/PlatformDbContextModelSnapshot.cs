@@ -77,9 +77,11 @@ namespace BUDLP.Migrations
                     b.Property<int>("TopicModuleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("NextTopicModuleId");
+                    b.Property<int>("Language");
 
-                    b.Property<int>("PrevTopicModuleId");
+                    b.Property<string>("NextTopicModuleUrl");
+
+                    b.Property<string>("PrevTopicModuleUrl");
 
                     b.Property<int>("TopicId");
 
@@ -97,6 +99,14 @@ namespace BUDLP.Migrations
                     b.Property<int>("TopicModuleContentId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Class");
+
+                    b.Property<int>("ContentGroup");
+
+                    b.Property<int>("Language");
+
+                    b.Property<string>("MetaContent");
+
                     b.Property<string>("ModuleContent");
 
                     b.Property<string>("ModuleDescription");
@@ -105,11 +115,11 @@ namespace BUDLP.Migrations
 
                     b.Property<string>("ModuleTitle");
 
-                    b.Property<int?>("NextTopicModuleContentId");
+                    b.Property<int>("PriorLearned");
 
-                    b.Property<int>("PrevTopicModuleContentId");
+                    b.Property<bool>("Quiz");
 
-                    b.Property<int>("QuizId");
+                    b.Property<int>("RelativeOrdering");
 
                     b.Property<int>("TopicModuleContentType");
 
@@ -127,7 +137,11 @@ namespace BUDLP.Migrations
                     b.Property<int>("UserProfileTopicId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("PastExperience");
+                    b.Property<string>("ListOrder");
+
+                    b.Property<int>("PastExperience");
+
+                    b.Property<int>("Status");
 
                     b.Property<bool>("ToLearn");
 
@@ -142,14 +156,42 @@ namespace BUDLP.Migrations
                     b.ToTable("UserProfileTopics");
                 });
 
+            modelBuilder.Entity("BUDLP.Models.TopicModuleState", b =>
+                {
+                    b.Property<int>("TopicModuleStateId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthenticatedUserId");
+
+                    b.Property<DateTime?>("FirstVisited");
+
+                    b.Property<DateTime?>("LastVisited");
+
+                    b.Property<int>("LearningState");
+
+                    b.Property<int>("TimeSpent");
+
+                    b.Property<int>("TopicId");
+
+                    b.Property<int>("TopicModuleId");
+
+                    b.HasKey("TopicModuleStateId");
+
+                    b.ToTable("TopicModuleStates");
+                });
+
             modelBuilder.Entity("BUDLP.Models.TopicQuizzes.Quiz", b =>
                 {
                     b.Property<int>("QuizId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("QuizAnswerId");
+                    b.Property<string>("QuestionText");
+
+                    b.Property<string>("QuizAnswer");
 
                     b.Property<int>("QuizType");
+
+                    b.Property<string>("Remark");
 
                     b.Property<int>("TopicModuleContentId");
 
@@ -163,13 +205,65 @@ namespace BUDLP.Migrations
                     b.Property<int>("QuizOptionId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Answer");
+
                     b.Property<int>("QuizId");
+
+                    b.Property<string>("QuizOptionText");
 
                     b.HasKey("QuizOptionId");
 
                     b.HasIndex("QuizId");
 
                     b.ToTable("QuizOptions");
+                });
+
+            modelBuilder.Entity("BUDLP.Models.TopicQuizzes.UserQuizResponse", b =>
+                {
+                    b.Property<int>("UserQuizResponseId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Correct");
+
+                    b.Property<DateTime>("DateSubmitted");
+
+                    b.Property<int>("QuizId");
+
+                    b.Property<string>("Response");
+
+                    b.Property<string>("UserProfileId");
+
+                    b.HasKey("UserQuizResponseId");
+
+                    b.ToTable("UserQuizResponses");
+                });
+
+            modelBuilder.Entity("BUDLP.Models.UserLearningState", b =>
+                {
+                    b.Property<int>("UserLearningStateId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthenticatedUserId");
+
+                    b.Property<DateTime?>("FirstVisited");
+
+                    b.Property<DateTime?>("LastVisited");
+
+                    b.Property<int>("LearningState");
+
+                    b.Property<int>("TimeSpent");
+
+                    b.Property<int>("TopicId");
+
+                    b.Property<int>("TopicModuleContentId");
+
+                    b.Property<int>("TopicModuleId");
+
+                    b.HasKey("UserLearningStateId");
+
+                    b.HasIndex("TopicModuleContentId");
+
+                    b.ToTable("UserLearningStates");
                 });
 
             modelBuilder.Entity("BUDLP.Models.TopicModels.TopicModule", b =>
@@ -201,6 +295,14 @@ namespace BUDLP.Migrations
                     b.HasOne("BUDLP.Models.TopicQuizzes.Quiz")
                         .WithMany("QuizOptions")
                         .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BUDLP.Models.UserLearningState", b =>
+                {
+                    b.HasOne("BUDLP.Models.TopicModels.TopicModuleContent")
+                        .WithMany("UserLearningState")
+                        .HasForeignKey("TopicModuleContentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

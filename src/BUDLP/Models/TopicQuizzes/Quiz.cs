@@ -17,7 +17,9 @@ namespace BUDLP.Models.TopicQuizzes
         public int QuizId { get; set; }
         public int TopicModuleContentId { get; set; }
         public QuizType QuizType { get; set; }
-        public int QuizAnswerId { get; set; }
+        public string QuestionText { get; set; }
+        public string QuizAnswer { get; set; }
+        public string Remark { get; set; }
         public List<QuizOption> QuizOptions { get; set; }
     }
 }

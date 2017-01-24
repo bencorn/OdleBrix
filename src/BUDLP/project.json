@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-BUDLP-c6886ba1-4e41-478d-a410-1cf57ff24031",
 
   "dependencies": {
@@ -42,7 +42,8 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "System.Collections.Specialized": "4.0.1"
   },
 
   "tools": {

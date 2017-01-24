@@ -1,40 +1,130 @@
-﻿<head>
+﻿@inject SignInManager<AuthenticatedUser> SignInManager
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5THJ97Q');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <base href="/" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="~/css/course-welcome.css" />
     <script src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.css">
     <script src="~/lib/angular/angular-route.min.js"></script>
+    <script src="~/lib/angular/angular-sanitize.js"></script>
+    <script src="~/lib/angulartics/dist/angulartics.min.js"></script>
     <script src="~/js/angular/dlp.js"></script>
     <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/angular/courseController.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
-
 </head>
 
+
 <body ng-app="dlp" ng-controller="courseController as vm">
-    <div class="ui fixed borderless menu">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5THJ97Q"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="ui classroom fixed borderless menu">
         <div class="ui container">
-            <div class="header item">
-                <img class="logo" src="http://www.firecracker.me/webhook-uploads/1470426413399/2000px-Boston_University_Wordmark.png">
-            </div>
-            <div class="right header item">
-                <a class="ui blue big circular label">BC</a>
+            <div ng-show='TopicModuleTitle !== ""' class="header item topic title">
+                <a class="_module-nav-arrow" ng-href="{{PrevModuleLink}}"><i class="ui left angle icon"></i></a>
+                {{TopicModuleTitle}}
+                <a class="_module-nav-arrow" ng-href="{{NextModuleLink}}"><i class="ui right angle icon"></i></a>
             </div>
         </div>
     </div>
 
     <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == true">
-        <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" ng-repeat="x in vm.ContentModules" class="item">
-            {{x.ModuleTitle}}
+        <a class="item" href="/course" style="background: rgba(0,0,0,.1); border-bottom: rgba(0,0,0,.15) !important;
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid !important;
+    color: rgba(0,0,0,.95);
+    line-height: .7;">
+            <i class="angle left icon"></i>
+            Back to Course
         </a>
+        <div class="ui accordion">
+            <div ng-click="isClicked = !isClicked; isClicked2 = true;" class="_sidebar-accordian-title title active">
+                Concepts
+                <i ng-class="{'ui angle down icon': isClicked, 'ui angle up icon' : !isClicked}" class="_sidebar-accordian-icon"></i>
+            </div>
+            <div class="active content">
+                <div style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 1}">
+                    <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
+                        @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
+                        @*<span class="cs-indicator bar" ng-class="{'cs-indicator-last': $last, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1) && !$last, 'blue' : x.UserLearningState[0].LearningState == 3 && !$last}"></span>*@
+                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play icon greyed' : 'youtube play icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
+                        {{x.ModuleTitle}}
+                    </a>
+                </div>
+            </div>
+            <div ng-init="isClicked2 = true;" ng-click="isClicked2 = !isClicked2; isClicked = true;" class="_sidebar-accordian-title title">
+                Implementation
+                <i ng-class="{'ui angle down icon': isClicked2, 'ui angle up icon' : !isClicked2}" class="_sidebar-accordian-icon"></i>
+            </div>
+            <div class="content">
+                <div style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 2}">
+                    <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
+                        @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
+                        @*<span class="cs-indicator bar" ng-class="{'cs-indicator-last': $last, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1) && !$last, 'blue' : x.UserLearningState[0].LearningState == 3 && !$last}"></span>*@
+                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play outline icon greyed' : 'youtube play icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
+                        {{x.ModuleTitle}}
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == false">
-        <a href="/course/{{x.Topic.TopicId}}/{{x.Topic.TopicModules[0].TopicModuleId}}" ng-repeat="x in vm.Topics" class="item">
-            {{x.Topic.TopicName}}
-        </a>
-    </div>
+        <div style="overflow: hidden;">
+            <a href="/course/" class="item">
+                <i class="cs-indicator dashboard icon"></i>
+                Home
+            </a>
+        </div>
+
+        <div style="overflow: hidden;">
+            <a href="http://community.odlebrix.com" class="item">
+                <i class="cs-indicator comments icon"></i>
+                Forums
+            </a>
+        </div>
+
+        <div style="overflow: hidden;">
+            <a href="/course/" class="item">
+                <i class="cs-indicator settings icon"></i>
+                Settings
+            </a>
+        </div>
+
+        <form id="logout_form" asp-controller="Account" asp-action="Logoff" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div style="overflow: hidden;">
+                <a class="logout_button item">
+                    <i class="cs-indicator sign out icon"></i>
+                    Logout
+                </a>
+            </div>
+        </form>
+
+        @*<div style="overflow: hidden;" ng-repeat="x in vm.Topics">
+            <a href="/course/{{x.Topic.TopicId}}/{{x.Topic.TopicModules[0].TopicModuleId}}/{{x.Topic.TopicModules[0].TopicModuleContent[0].TopicModuleContentId}}" class="item">
+                <i class="cs-indicator" ng-class="x.Status == 0 ? 'terminal icon greyed' : 'terminal icon blue'"></i>
+                {{x.Topic.TopicName}}
+            </a>
+        </div>*@
+</div>
     <div class="pusher">
         <div ng-view></div>
     </div>

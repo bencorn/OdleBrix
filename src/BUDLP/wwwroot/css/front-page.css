@@ -2,10 +2,10 @@
     margin-top: 3.6em !important;
 }
 
-.intro-section{
+/*.intro-section{
     background-image: url('https://s-media-cache-ak0.pinimg.com/originals/f5/51/5e/f5515ebe09ffd16984bb095d7917cbd0.jpg') !important;
     background-repeat: repeat;
-}
+}*/
 
 .profile-section{
     margin-top: 0 !important;
@@ -15,6 +15,40 @@
     width: 420px !important;
     margin: 0 0 0 -210px !important;
     margin-top: -200px !important;
+}
+
+.profile-login-modal{
+    width: 420px !important;
+    margin: 0 0 0 -210px !important;
+    margin-top: -200px !important;
+}
+
+#wavybg-wrapper {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+._overlay-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+}
+
+.segment.intro-section{
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+}
+
+._overlay{
+    width: 100%;
+    height: 500px;
+    opacity: .5;
+    background-color: #2e3d49;
 }
 
 .login-segment{
@@ -39,6 +73,25 @@
     margin: 0 !important;
 }
 
+.profile-login-modal input{
+    height: 48px !important;
+    border-radius: 0 !important;
+}
+
+.profile-login-modal .email-field{
+    border-bottom: 0px !important;
+
+}
+
+.profile-login-modal .field{
+    margin: 0 !important;
+}
+
+.sign-in.button{
+    margin-top: 1em;
+    border-radius: 0;
+}
+
 .sign-up.button{
     margin-top: 1em;
     border-radius: 0;
@@ -52,4 +105,68 @@
 
 .login-modal .login-header{
     margin-left: 60px !important;
+}
+
+.profile-login-modal .login-header{
+    margin-left: 60px !important;
+    padding: 0.25rem 3.5rem !important;
+}
+
+.register.field{
+    margin-bottom: 5px !important;
+}
+
+.welcome.header{
+    font-weight: 500;
+    margin-top: 100px !important;
+    font-size: 3em !important;
+    vertical-align: middle;
+    position: absolute !important;
+    margin: auto;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.intro-section{
+    height: 500px;
+}
+
+canvas{
+    width: 100% !important;
+    min-height: 500px;
+}
+
+@media only screen and (max-width: 500px) {
+    ._overlay-container{
+        height: 150px !important;
+    }   
+
+    #wavybg-wrapper{
+        height: 150px !important;
+    }
+
+    .intro-section{
+        height: 150px !important;
+    }
+
+    ._overlay{
+        height: 150px !important;
+    }
+
+    canvas{
+        height: 150px !important;
+    }
+
+    .welcome.header{
+        margin-top: 50px !important;
+        top: 35px;
+    }
+}
+
+.ui.error.message{
+    width: 50% !important;
+    margin: auto !important;
+    margin-bottom: 5px !important;
 }

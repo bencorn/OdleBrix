@@ -44,6 +44,7 @@
 
         // Reference to scope of controller
         var vm = this;
+        var smokyBG;
 
         // On page load book-keeping
         $(function () {
@@ -60,7 +61,52 @@
             $('.login-modal')
                 .modal('attach events', '.login-button')
             ;
+
+            $("._continue-button").click(function () {
+                if ($(".intro-section").height() >= 500) {
+                    $(".intro-section").animate({
+                        height: '-=250px'
+                    }, 1000);
+                    $(".welcome.header").animate({
+                        top: '0'
+                    }, 1000);
+                }
+                else {
+                    $(".intro-section").animate({
+                        height: '-=75px'
+                    }, 1000);
+                }
+                $('html, body').animate({
+                    scrollTop: $(".profile-section").offset().top
+                }, 2000);
+            });
+
+            smokyBG = $('#wavybg-wrapper').waterpipe({
+                //Default values
+                gradientStart: '#00c8aa',
+                gradientEnd: '#FFD700',
+                smokeOpacity: 0.1,
+                numCircles: 2,
+                maxMaxRad: 'auto',
+                minMaxRad: 'auto',
+                minRadFactor: 0,
+                iterations: 8,
+                drawsPerFrame: 10,
+                lineWidth: 2,
+                speed: 0,
+                bgColorInner: "#2B2D35",
+                bgColorOuter: "#000000"
+            });
+
         });
+
+        $(window).resize(function () {
+            smokyBG.data('waterpipe').generate();
+        });
+
+        vm.SignIn = function () {
+
+        };
 
         // Detect changes to target language dropdown
         $scope.$watch('vm.UserProfile.TargetLanguage', function () {
@@ -102,16 +148,14 @@
                 TargetLanguage: vm.UserProfile.TargetLanguage
             };
 
+            var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+            if (strongRegex.test(vm.UserProfile.Password)) {
                 // Request an account to be created
                 $http.post("/api/profile/create", payload)
                     .then(function (result) {
                         // Reset profile form
                         vm.UserProfile = {};
-
-                        // Hide login modal
-                        $('.login-modal')
-                            .modal('hide')
-                        ;
 
                         // Teleport user to their custom course
                         window.location.href = "/course";
@@ -122,6 +166,14 @@
                     .finally(function () {
 
                     });
+            }
+            else {
+                vm.UserProfile.PasswordWarning = "Password must be 8 characters or longer, contain at least 1 lowercase, 1 uppercase character, 1 number, and 1 special character.";
+                $('.password.register.field').focus();
+            }
+
+
+
             
         }
 

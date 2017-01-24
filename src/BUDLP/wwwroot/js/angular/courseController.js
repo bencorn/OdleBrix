@@ -247,14 +247,36 @@
                                 $('.ui.checkbox').checkbox('enable');
 
                                 $('.menu .item').tab();
+
+                                // if quiz response exists, get it and set quiz
+                                vm.Quizzes.forEach(function(quiz) {
+                                    $http.post("/api/quiz/response", { QuizId: quiz.QuizId })
+                                        .then(function (result) {
+                                            var response = result.data;
+                                            if (response !== "EMPTY") {
+                                                response = JSON.parse(response);
+                                                quiz.Correct = {};
+                                                quiz.Correct = response.Correct;
+                                                if (quiz.QuizType == 0) {
+                                                    quiz.SelectedAnswer = response.Response;
+                                                }
+                                                else {
+                                                    quiz.Checked = JSON.parse(response.Response);
+                                                }
+                                            }
+
+                                        });
+                                })
                             });
                         });
                 }
 
+
+
                 // Sets video content module to completed when video has ended
                 if (vm.Module.UserLearningState[0].LearningState !== 3) {
                     $http.post("/api/state/set", { ContentModuleId: $rootScope.topicContentModuleId, State: 3, TopicId: $routeParams.moduleId })
-                        .then(function (result) {console.log('Video finished: content state set to 3.')});
+                        .then(function (result) { console.log('Video finished: content state set to 3.') });
                 }
 
 

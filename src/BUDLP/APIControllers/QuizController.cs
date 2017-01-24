@@ -53,7 +53,7 @@ namespace BUDLP.APIControllers
             _ctx.SaveChanges();
 
             //TODO: Try catch, better result other than status code.
-            return result = new JsonResult(new JsonResult(HttpStatusCode.Accepted));  
+            return result = new JsonResult(new JsonResult(HttpStatusCode.Accepted));
         }
 
         [HttpPost("api/quiz/get")]
@@ -76,20 +76,48 @@ namespace BUDLP.APIControllers
             return result;
         }
 
-        public class GetQuizPayload
+        [HttpPost("api/quiz/response")]
+        public async Task<JsonResult> GetQuizResponse([FromBody] ResponsePayload q)
         {
-            public int TopicModuleContentId { get; set; }
-        }
+            var user = await GetCurrentUserAsync();
+            var userProfileId = user?.Id;
 
-        public class QuizSubmitPayload
-        {
-            public int QuizId { get; set; }
-            public string Response { get; set; }
-            public bool Correct { get; set; }
-        }
+            var response = _ctx.UserQuizResponses
+                .Where(x => x.UserProfileId == userProfileId && x.QuizId == q.QuizId)
+                .OrderByDescending(x => x.DateSubmitted)
+                .FirstOrDefault();
 
+            if (response != null)
+            {
+                return new JsonResult(JsonConvert.SerializeObject(response));
+            }
+            else
+            {
+                return new JsonResult("EMPTY");
+            }
+
+        }
 
     }
+
+    public class GetQuizPayload
+    {
+        public int TopicModuleContentId { get; set; }
+    }
+
+    public class ResponsePayload
+    {
+        public int QuizId { get; set; }
+    }
+
+    public class QuizSubmitPayload
+    {
+        public int QuizId { get; set; }
+        public string Response { get; set; }
+        public bool Correct { get; set; }
+    }
+
+
 
 
 }

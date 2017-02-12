@@ -73,69 +73,69 @@ namespace BUDLP.APIControllers
                     .FirstOrDefault();
 
             // If toLearn on profTopic is false, do not include any concept
-            if (!profTopic.ToLearn)
-            {
-                switch (profTopic.PastExperience)
-                {
-                    case PriorLearned.None:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.None && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.C2M:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.C2M && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.C2CPP:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.C2CPP && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.M2C:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.M2C && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.M2CPP:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.M2CPP && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.CPP2M:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CPP2M && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.CPP2C:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CPP2C && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.MC2CPP:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.MC2CPP && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.MCPP2C:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.MC2CPP && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    case PriorLearned.CCPP2M:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CCPP2M && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                    default:
-                        topicModules = _ctx.TopicModuleContent
-                            .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.None && x.TopicModuleId == payload.TopicModuleId)
-                            .ToList();
-                        break;
-                }
-            }
-            else
-            {
+            //if (!profTopic.ToLearn)
+            //{
+            //    switch (profTopic.PastExperience)
+            //    {
+            //        case PriorLearned.None:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.None && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.C2M:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.C2M && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.C2CPP:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.C2CPP && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.M2C:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.M2C && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.M2CPP:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.M2CPP && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.CPP2M:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CPP2M && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.CPP2C:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CPP2C && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.MC2CPP:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.MC2CPP && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.MCPP2C:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.MC2CPP && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        case PriorLearned.CCPP2M:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.CCPP2M && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //        default:
+            //            topicModules = _ctx.TopicModuleContent
+            //                .Where(x => (x.Language == user.TargetLanguage || x.Language == TopicModuleLanguage.Concept) && x.PriorLearned == PriorLearned.None && x.TopicModuleId == payload.TopicModuleId)
+            //                .ToList();
+            //            break;
+            //    }
+            //}
+            //else
+            //{
                 switch (profTopic.PastExperience)
                 {
                     case PriorLearned.None:
@@ -194,7 +194,7 @@ namespace BUDLP.APIControllers
                             .ToList();
                         break;
                 }
-            }
+            //}
 
             _ctx.UserLearningStates
                 .Where(x => x.AuthenticatedUserId == user.Id)

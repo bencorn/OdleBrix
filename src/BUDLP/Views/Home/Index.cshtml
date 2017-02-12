@@ -86,14 +86,18 @@
                         </wz-step>
                         <wz-step wz-title="Register">
                             <h2>You're almost done!</h2>
-                            @*<div class="ui vertical masthead center aligned grid">
-                                <button class="ui blue button login-button">Create Profile</button>
-                            </div>*@
                             <div class="ui center aligned container">
-                                <div ng-show="vm.UserProfile.PasswordWarning !== undefined" class="ui error message">{{vm.UserProfile.PasswordWarning}}</div>
+                                <div ng-show="vm.UserProfile.PasswordWarning !== undefined" class="ui error message">
+                                    Password must contain: <br />
+                                    At least 1 lowercase character <br />
+                                    At least 1 uppercase character <br />
+                                    At least 1 number <br />
+                                    At least 1 special character (!,@@, etc.) <br />
+                                    At least 8 characters long
+                                </div>
                                 <div class="ui form">
                                     <input ng-model="vm.UserProfile.FullName" class="eight wide register field" autofocus placeholder="Full Name" />
-                                    <input ng-model="vm.UserProfile.Email" class="eight wide register field"  placeholder="Email" />
+                                    <input ng-model="vm.UserProfile.Email" class="eight wide register field" placeholder="Email" />
                                     <input ng-model="vm.UserProfile.Password" type="password" class="eight wide password register field" placeholder="Password" />
                                 </div>
                             </div>

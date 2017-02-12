@@ -166,34 +166,6 @@ namespace BUDLP.APIControllers
                     _ctx.UserProfileTopics.Add(upt);
                     _ctx.SaveChanges();
 
-                    // Create TopicModuleStates
-
-
-                    //var topicModules = _ctx.TopicModules.Where(x => x.TopicId == top.TopicId).ToList();
-                    //foreach (var con in topicModules)
-                    //{
-                    //    _ctx.TopicModuleStates.Add(new TopicModuleState()
-                    //    {
-                    //        AuthenticatedUserId = user.Id,
-                    //        LearningState = (int)LearningState.Untouched,
-                    //        TopicId = con.TopicId,
-                    //        TopicModuleId = con.TopicModuleId
-                    //    });
-
-                    //    // Create UserLearningState for each content module in topic module
-                    //    var contentModules = _ctx.TopicModuleContent.Where(x => x.TopicModuleId == con.TopicModuleId);
-                    //    foreach (var cont in contentModules)
-                    //    {
-                    //        _ctx.UserLearningStates.Add(new UserLearningState()
-                    //        {
-                    //            AuthenticatedUserId = user.Id,
-                    //            LearningState = (int)LearningState.Untouched,
-                    //            TopicId = con.TopicId,
-                    //            TopicModuleContentId = cont.TopicModuleContentId,
-                    //            TopicModuleId = cont.TopicModuleId 
-                    //        });
-                    //    }
-                    //}
                 }
 
                 var userProfileTopics = _ctx.UserProfileTopics
@@ -203,7 +175,7 @@ namespace BUDLP.APIControllers
                 foreach(UserProfileTopic u in userProfileTopics)
                 {
                     var contentModules = _ctx.TopicModuleContent
-                        .Where(x => x.TopicModule.TopicId == u.TopicId && x.PriorLearned == u.PastExperience)
+                        .Where(x => x.TopicModule.TopicId == u.TopicId && x.PriorLearned == u.PastExperience && x.Language == user.TargetLanguage || x.PriorLearned == PriorLearned.None && x.TopicModule.TopicId == u.TopicId && x.Language == user.TargetLanguage || x.TopicModule.TopicId == u.TopicId && x.Class == ContentModuleClass.Concept)
                         .ToList();
 
                     foreach(TopicModuleContent t in contentModules)

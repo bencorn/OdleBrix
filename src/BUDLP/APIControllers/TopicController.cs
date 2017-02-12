@@ -448,6 +448,24 @@ namespace BUDLP.APIControllers
             return new JsonResult(result);
         }
 
+        // Load topic module content item
+        [HttpPost("api/module/enable")]
+        public async Task<JsonResult> EnableTopicModule([FromBody] EnableTopicPayload payload)
+        {
+            var user = await GetCurrentUserAsync();
+
+            var userProfileTopic = _ctx.UserProfileTopics.Where(x => x.UserProfileId == user.Id && x.TopicId == payload.TopicId).FirstOrDefault();
+
+            if (userProfileTopic != null)
+            {
+                userProfileTopic.ToLearn = true;
+                _ctx.SaveChanges();
+            }
+
+            return new JsonResult("Topic enabled.");
+        }
+
+
         // Payload section
         public class GetTopicPayload
         {
@@ -458,6 +476,11 @@ namespace BUDLP.APIControllers
         {
             public int ModuleId { get; set; }
             public int ContentModuleId { get; set; }
+        }
+
+        public class EnableTopicPayload
+        {
+            public int TopicId { get; set; }
         }
 
         public class LoadTopicModuleContentPayload

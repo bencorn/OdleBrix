@@ -110,7 +110,7 @@
 
 .quiz.overlay{
     margin: auto;
-    max-width: 40%;
+    max-width: 70%;
     text-align: left;
     display: block;
 }
@@ -310,4 +310,21 @@
 
 .field.quiz.answer{
     color:#1c262f !important;
+}
+
+.ui.sidebar {
+    height: auto !important;
+    bottom: 0 !important;
+}
+.dimmed.dimmable > .ui.simple.dimmer {
+    overflow: scroll;
+}
+
+.topic.enable.button{
+    margin: 0 auto !important;
+}
+
+.topic.enable.wrapper{
+    display: flex !important;
+    padding: 10px 0 10px 0;
 }

@@ -13,7 +13,7 @@
                             </a>
                         </div>
                         <div ng-repeat="q in vm.Quizzes" ng-class="{'active': $first}" class="ui tab segment" data-tab="{{q.QuizId}}">
-                            <h3 class="ui header" style="color: rgba(0,0,0,.87);">{{q.QuestionText}}</h3>
+                            <h3 ng-bind-html="q.QuestionText" class="ui header" style="color: rgba(0,0,0,.87);"></h3>
                             <div class="fields" ng-include="q.QuizType ? 'partials/quiz_checkbox.html' : 'partials/quiz_radio.html'">
                             </div>
                             <br />

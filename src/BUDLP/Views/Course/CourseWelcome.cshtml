@@ -60,7 +60,7 @@
                 <i ng-class="{'ui angle down icon': isClicked, 'ui angle up icon' : !isClicked}" class="_sidebar-accordian-icon"></i>
             </div>
             <div class="active content">
-                <div style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 1}">
+                <div ng-if="ToLearn" style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 1}">
                     <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
                         @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
                         @*<span class="cs-indicator bar" ng-class="{'cs-indicator-last': $last, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1) && !$last, 'blue' : x.UserLearningState[0].LearningState == 3 && !$last}"></span>*@
@@ -68,6 +68,11 @@
                         <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
                         {{x.ModuleTitle}}
                     </a>
+                </div>
+                <div ng-if="!ToLearn" class="topic enable wrapper">
+                    <button ng-click="vm.EnableTopicModule()" class="ui primary topic enable button">
+                        Enable this Topic
+                    </button>
                 </div>
             </div>
             <div ng-init="isClicked2 = true;" ng-click="isClicked2 = !isClicked2; isClicked = true;" class="_sidebar-accordian-title title">

@@ -293,6 +293,14 @@
             }
         }
 
+        vm.EnableTopicModule = function () {
+            $rootScope.ToLearn = true;
+
+            /* POST change to user profile topic */
+            var payload = { TopicId: $rootScope.moduleId };
+            $http.post("/api/module/enable", payload);
+        }
+
         $(function () {
 
             $('.logout_button').click(function () {
@@ -308,6 +316,13 @@
                         $('.ui.accordion')
                             .accordion()
                         ;
+
+                        for (var i = 0, len = vm.Topics.length; i < len; i++) {
+                            if (vm.Topics[i].TopicId == $rootScope.moduleId) {
+                                $rootScope.ToLearn = vm.Topics[i].ToLearn;
+                                return;
+                            }
+                        }
                     });
                 },
                 function () {

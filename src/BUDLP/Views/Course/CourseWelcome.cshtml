@@ -59,13 +59,13 @@
                 Concepts
                 <i ng-class="{'ui angle down icon': isClicked, 'ui angle up icon' : !isClicked}" class="_sidebar-accordian-icon"></i>
             </div>
-            <div class="active content">
+            <div ng-class="{'active content' : ToLearn, 'content' : !ToLearn}">
                 <div ng-if="ToLearn" style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 1}">
                     <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
                         @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
                         @*<span class="cs-indicator bar" ng-class="{'cs-indicator-last': $last, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1) && !$last, 'blue' : x.UserLearningState[0].LearningState == 3 && !$last}"></span>*@
-                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play icon greyed' : 'youtube play icon blue'"></i>
-                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState === null || x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play icon greyed' : 'youtube play icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState === null || x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
                         {{x.ModuleTitle}}
                     </a>
                 </div>
@@ -79,13 +79,13 @@
                 Implementation
                 <i ng-class="{'ui angle down icon': isClicked2, 'ui angle up icon' : !isClicked2}" class="_sidebar-accordian-icon"></i>
             </div>
-            <div class="content">
+            <div ng-class="{'content' : ToLearn, ' active content' : !ToLearn}">
                 <div style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 2}">
                     <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
                         @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
                         @*<span class="cs-indicator bar" ng-class="{'cs-indicator-last': $last, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1) && !$last, 'blue' : x.UserLearningState[0].LearningState == 3 && !$last}"></span>*@
-                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play outline icon greyed' : 'youtube play icon blue'"></i>
-                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 1" class="cs-indicator" ng-class="x.UserLearningState === null || x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'youtube play outline icon greyed' : 'youtube play icon blue'"></i>
+                        <i ng-show="x.TopicModuleContentType == 2 || x.TopicModuleContentType == 3" class="cs-indicator" ng-class="x.UserLearningState === null || x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ? 'copy icon greyed' : 'copy icon blue'"></i>
                         {{x.ModuleTitle}}
                     </a>
                 </div>
@@ -122,13 +122,6 @@
                 </a>
             </div>
         </form>
-
-        @*<div style="overflow: hidden;" ng-repeat="x in vm.Topics">
-            <a href="/course/{{x.Topic.TopicId}}/{{x.Topic.TopicModules[0].TopicModuleId}}/{{x.Topic.TopicModules[0].TopicModuleContent[0].TopicModuleContentId}}" class="item">
-                <i class="cs-indicator" ng-class="x.Status == 0 ? 'terminal icon greyed' : 'terminal icon blue'"></i>
-                {{x.Topic.TopicName}}
-            </a>
-        </div>*@
 </div>
     <div class="pusher">
         <div ng-view></div>

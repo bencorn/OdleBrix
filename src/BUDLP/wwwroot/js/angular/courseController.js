@@ -114,7 +114,17 @@
                         switch (vm.Module.TopicModuleContentType) {
                             // Video ContentType
                             case 1:
-                                if (vm.Module.UserLearningState[0].LearningState !== 3) {
+                                if (vm.Module.UserLearningState === null) {
+                                    // create user learning state for module
+                                    $http.post("/api/state/create", { ContentModuleId: $rootScope.topicContentModuleId, TopicId: $routeParams.moduleId, TopicModuleId: $rootScope.contentModuleId })
+                                        .then(function (result) {
+                                            vm.Module.UserLearningState = [];
+                                            vm.Module.UserLearningState[0] = JSON.parse(result.data);
+                                        })
+                                }
+
+
+                                else if (vm.Module.UserLearningState[0].LearningState !== 3) {
                                     $http.post("/api/state/set", { ContentModuleId: $rootScope.topicContentModuleId, State: 1, TopicId: $routeParams.moduleId })
                                         .then(function (result) { console.log('Content state set to started.') });
                                 }
@@ -132,14 +142,30 @@
                                 break;
                             // Text ContentType
                             case 2:
-                                if (vm.Module.UserLearningState[0].LearningState !== 3) {
+                                if (vm.Module.UserLearningState === null) {
+                                    // create user learning state for module
+                                    $http.post("/api/state/create", { ContentModuleId: $rootScope.topicContentModuleId, TopicId: $routeParams.moduleId, TopicModuleId: $rootScope.contentModuleId })
+                                        .then(function (result) {
+                                            vm.Module.UserLearningState = [];
+                                            vm.Module.UserLearningState[0] = JSON.parse(result.data);
+                                        })
+                                }
+                                else if (vm.Module.UserLearningState[0].LearningState !== 3) {
                                     $http.post("/api/state/set", { ContentModuleId: $rootScope.topicContentModuleId, State: 3, TopicId: $routeParams.moduleId })
                                         .then(function (result) { console.log('Content state set to started.') });
                                 }
                                 $('.pusher').css('cssText', '');
                                 break;
                             case 3:
-                                if (vm.Module.UserLearningState[0].LearningState !== 3) {
+                                if (vm.Module.UserLearningState === null) {
+                                    // create user learning state for module
+                                    $http.post("/api/state/create", { ContentModuleId: $rootScope.topicContentModuleId, TopicId: $routeParams.moduleId, TopicModuleId: $rootScope.contentModuleId })
+                                        .then(function (result) {
+                                            vm.Module.UserLearningState = [];
+                                            vm.Module.UserLearningState[0] = JSON.parse(result.data);
+                                        })
+                                }
+                                else if (vm.Module.UserLearningState[0].LearningState !== 3) {
                                     $http.post("/api/state/set", { ContentModuleId: $rootScope.topicContentModuleId, State: 3, TopicId: $routeParams.moduleId })
                                         .then(function (result) { console.log('Content state set to started.') });
                                 }

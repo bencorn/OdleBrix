@@ -31,6 +31,27 @@ namespace BUDLP.APIControllers
             _signInManager = signInManager;
         }
 
+        [HttpPost("api/state/create")]
+        public async Task<JsonResult> CreateContentModuleState([FromBody] ContentModuleState cms)
+        {
+            var user = await GetCurrentUserAsync();
+            UserLearningState uls = new UserLearningState()
+            {
+                FirstVisited = DateTime.Now,
+                LastVisited = DateTime.Now,
+                LearningState = LearningState.Started,
+                AuthenticatedUserId = user.Id,
+                TopicId = cms.TopicId,
+                TopicModuleContentId = cms.ContentModuleId,
+                TopicModuleId = cms.TopicModuleId
+            };
+
+            _ctx.UserLearningStates.Add(uls);
+            _ctx.SaveChanges();
+
+            return new JsonResult(JsonConvert.SerializeObject(uls));
+        }
+
         [HttpPost("api/state/set")]
         public async Task<JsonResult> SetContentModuleState([FromBody] ContentModuleState cms)
         {
@@ -90,6 +111,7 @@ namespace BUDLP.APIControllers
             public int State { get; set; }
             public int TopicId { get; set; }
             public int ContentModuleId { get; set; }
+            public int TopicModuleId { get; set; }
         }
     }
 }

@@ -175,7 +175,7 @@ namespace BUDLP.APIControllers
                 foreach(UserProfileTopic u in userProfileTopics)
                 {
                     var contentModules = _ctx.TopicModuleContent
-                        .Where(x => x.TopicModule.TopicId == u.TopicId && x.PriorLearned == u.PastExperience && x.Language == user.TargetLanguage || x.PriorLearned == PriorLearned.None && x.TopicModule.TopicId == u.TopicId && x.Language == user.TargetLanguage || x.TopicModule.TopicId == u.TopicId && x.Class == ContentModuleClass.Concept)
+                        .Where(x => x.TopicModule.TopicId == u.TopicId && x.PriorLearned == u.PastExperience && x.Language == user.TargetLanguage || x.PriorLearned == PriorLearned.None && x.TopicModule.TopicId == u.TopicId && x.Language == user.TargetLanguage || x.TopicModule.TopicId == u.TopicId && x.Class == ContentModuleClass.Concept && x.Language == TopicModuleLanguage.Concept)
                         .ToList();
 
                     foreach(TopicModuleContent t in contentModules)

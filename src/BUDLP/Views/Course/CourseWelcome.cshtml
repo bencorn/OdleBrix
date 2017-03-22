@@ -59,7 +59,7 @@
                 Concepts
                 <i ng-class="{'ui angle down icon': isClicked, 'ui angle up icon' : !isClicked}" class="_sidebar-accordian-icon"></i>
             </div>
-            <div ng-class="{'active content' : ToLearn, 'content' : !ToLearn}">
+            <div ng-class="{'active content' : ToLearn || ToLearnOverride, 'content' : !ToLearn || ToLearnOverride}">
                 <div ng-if="ToLearn" style="overflow: hidden;" ng-repeat="x in vm.ContentModules | filter: {Class: 1}">
                     <a href="/course/{{moduleId}}/{{contentModuleId}}/{{x.TopicModuleContentId}}" class="item">
                         @*<span class="cs-indicator bar-top" ng-class="{'cs-indicator-first': $first, 'greyed' : (x.UserLearningState[0].LearningState == 0 || x.UserLearningState[0].LearningState == 1 ) && !$first, 'blue' : x.UserLearningState[0].LearningState == 3 && !$first}"></span>*@
@@ -69,7 +69,7 @@
                         {{x.ModuleTitle}}
                     </a>
                 </div>
-                <div ng-if="!ToLearn" class="topic enable wrapper">
+                <div ng-if="!ToLearn && !ToLearnOverride" class="topic enable wrapper">
                     <button ng-click="vm.EnableTopicModule()" class="ui primary topic enable button">
                         Enable this Concept
                     </button>

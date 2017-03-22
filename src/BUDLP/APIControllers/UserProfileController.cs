@@ -72,6 +72,7 @@ namespace BUDLP.APIControllers
                     var upt = new UserProfileTopic()
                     {
                         ToLearn = top.ToLearn,
+                        ToLearnOverride = false,
                         TopicId = top.TopicId,
                         UserProfileId = user.Id,
                         ListOrder = order

@@ -390,7 +390,7 @@ namespace BUDLP.APIControllers
 
             if (userProfileTopic != null)
             {
-                userProfileTopic.ToLearn = true;
+                userProfileTopic.ToLearnOverride = true;
                 _ctx.SaveChanges();
             }
 

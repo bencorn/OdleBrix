@@ -36,6 +36,9 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="ui classroom fixed borderless menu">
+        <a ng-click="vm.ShowSidebarMenu = !vm.ShowSidebarMenu; vm.ToggleSideBar()" class="launch icon item">
+            <i class="content icon"></i>
+        </a>
         <div class="ui container">
             <div ng-show='TopicModuleTitle !== ""' class="header item topic title">
                 <a class="_module-nav-arrow" ng-href="{{PrevModuleLink}}"><i class="ui left angle icon"></i></a>
@@ -45,12 +48,12 @@
         </div>
     </div>
 
-    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == true">
+    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == true || !vm.ShowSidebarMenu">
         <a class="item" href="/course" style="background: rgba(0,0,0,.1); border-bottom: rgba(0,0,0,.15) !important;
-    border-bottom-width: 1px !important;
-    border-bottom-style: solid !important;
-    color: rgba(0,0,0,.95);
-    line-height: .7;">
+            border-bottom-width: 1px !important;
+            border-bottom-style: solid !important;
+            color: rgba(0,0,0,.95);
+            line-height: .7;">
             <i class="angle left icon"></i>
             Back to Course
         </a>
@@ -92,7 +95,7 @@
             </div>
         </div>
     </div>
-    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == false">
+    <div class="ui vertical left visible sidebar borderless menu" ng-hide="topicModule == false || !vm.ShowSidebarMenu">
         <div style="overflow: hidden;">
             <a href="/course/" class="item">
                 <i class="cs-indicator dashboard icon"></i>

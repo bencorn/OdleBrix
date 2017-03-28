@@ -40,6 +40,7 @@
 
         var vm = this;
 
+        $scope.vm.ShowSidebarMenu = true;
         $rootScope.videoFinished = false;
         $rootScope.ToLearnOverride = false;
         $rootScope.topicModule = true;
@@ -57,6 +58,15 @@
         vm.ContentModules = {};
 
         var player;
+
+        vm.ToggleSideBar = function () {
+            if (!vm.ShowSidebarMenu) {
+                $('.ui.sidebar.visible ~ .pusher').css({ 'width': '100%', 'transform' : 'inherit' });
+            }
+            else {
+                $('.ui.sidebar.visible ~ .pusher').css({ 'width': 'calc(100% - 260px)', 'transform': 'translate3d(260px,0,0)' });
+            }
+        }
 
         $scope.$watchCollection('[vm.moduleId]', function () {
             var payload = { ModuleId: vm.moduleId, ContentModuleId: vm.contentModuleId }

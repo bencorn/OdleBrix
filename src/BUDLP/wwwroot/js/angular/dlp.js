@@ -1,7 +1,7 @@
 ﻿(function () {
 
     // Creating module
-    var dlp = angular.module("dlp", ['ngRoute', 'ngSanitize', 'mgo-angular-wizard']).
+    var dlp = angular.module("dlp", ['ngRoute', 'ngSanitize', 'mgo-angular-wizard', 'checklist-model']).
     config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/course/', {
             templateUrl: '/partials/learn.html',

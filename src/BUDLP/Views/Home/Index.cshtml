@@ -8,6 +8,7 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/angular/angular.min.js"></script>
     <script type="text/javascript" src="~/js/angular-wizard.min.js"></script>
+    <script type="text/javascript" src="~/js/angular/checklist-model.js"></script>
     <link rel="stylesheet" type="text/css" href="~/css/angular-wizard.min.css">
     <script src="~/lib/angular/angular-route.min.js"></script>
     <script src="~/lib/angular/angular-sanitize.js"></script>
@@ -71,12 +72,34 @@
                                         </td>
                                         <td>{{x.TopicName}}</td>
                                         <td>
-                                            <select ng-model="x.PastExperience" multiple="" class="ui fluid dropdown experience">
-                                                <option value="0">None</option>
-                                                <option value="1">C</option>
-                                                <option value="2">C++</option>
-                                                <option value="3">MATLAB</option>
-                                            </select>
+                                            <div class="ui form">
+                                                <div class="inline fields">
+                                                    <div class="field">
+                                                        <div class="ui checkbox">
+                                                            <input value="None" checklist-value="'0'" checklist-model="x.PastExperience" type="checkbox" name="frequency" checked="checked">
+                                                            <label>None</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui checkbox">
+                                                            <input value="C" checklist-value="'1'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
+                                                            <label>C</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui checkbox">
+                                                            <input value="C++" checklist-value="'2'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
+                                                            <label>C++</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui checkbox">
+                                                            <input value="MATLAB" checklist-value="'3'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
+                                                            <label>MATLAB</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>{{x.PreReq}}</td>
                                     </tr>

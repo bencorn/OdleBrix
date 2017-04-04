@@ -104,9 +104,17 @@
             smokyBG.data('waterpipe').generate();
         });
 
-        vm.SignIn = function () {
-
-        };
+        vm.AssessPastExperience = function(exp, checked, b){
+            if (exp[0] == '0') {
+                exp.splice(0, 1);
+                exp.push(checked);
+            }
+            else if (exp.length == 1 && checked == exp[0]) {
+                exp.push('0');
+                var index = exp.indexOf(checked);
+                exp.splice(index, 1);
+            }
+        }
 
         // Detect changes to target language dropdown
         $scope.$watch('vm.UserProfile.TargetLanguage', function () {

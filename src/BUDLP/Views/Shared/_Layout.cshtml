@@ -12,7 +12,6 @@
     <script src="~/semantic/dist/semantic.min.js"></script>
     <script src="~/js/front-page.js"></script>
     <script src="~/js/site.js"></script>
-
 </head>
 <body class="pushable">
     <div class="ui borderless fixed menu">
@@ -27,16 +26,9 @@
             </div>
         </div>
     </div>
-
     <div class="pusher">
         @RenderBody()
-
-        @*<hr />
-        <footer>
-            <p>&copy; 2016 - BUDLP</p>
-        </footer>*@
     </div>
-
-    </body>
+</body>
 </html>
 @RenderSection("scripts", required: false)

@@ -11,7 +11,8 @@ namespace BUDLP.Models.TopicModels
     {
         Video = 1,
         Text = 2,
-        Slide = 3
+        Slide = 3,
+        Quiz = 4
     }
 
     public enum ContentModuleClass

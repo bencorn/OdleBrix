@@ -60,153 +60,14 @@ namespace BUDLP.APIControllers
         [HttpPost("api/profile/create")]
         public async Task<ActionResult> GetTopics([FromBody] Profile payload)
         {
-            var user = new AuthenticatedUser { UserName = payload.Email, Email = payload.Email, FullName = payload.FullName,TargetLanguage = (TopicModuleLanguage)payload.TargetLanguage, IsStaff = false, IsActive = true, IsSuperUser = false };
+            var user = new AuthenticatedUser { UserName = payload.Email, Email = payload.Email, FirstName = payload.FirstName, LastName = payload.LastName ,IsStaff = false, IsActive = true, IsSuperUser = false };
             var result = await _userManager.CreateAsync(user, payload.Password);
 
             if (result.Succeeded)
             {
-                // Create UserProfileTopics
-                foreach (var top in payload.ProfileTopics)
-                {
-                    string order = top.COrder.ToString() + top.CPLUSOrder.ToString() + top.MATLABOrder.ToString();
-                    var upt = new UserProfileTopic()
-                    {
-                        ToLearn = top.ToLearn,
-                        ToLearnOverride = false,
-                        TopicId = top.TopicId,
-                        UserProfileId = user.Id,
-                        ListOrder = order
-                    };
-
-                    if (top.PastExperience.Contains(1) && top.PastExperience.Contains(2))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.MATLAB:
-                                upt.PastExperience = PriorLearned.CCPP2M;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else if (top.PastExperience.Contains(1) && top.PastExperience.Contains(3))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.CPP:
-                                upt.PastExperience = PriorLearned.MC2CPP;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else if (top.PastExperience.Contains(2) && top.PastExperience.Contains(3))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.C:
-                                upt.PastExperience = PriorLearned.MCPP2C;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else if (top.PastExperience.Contains(1))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.CPP:
-                                upt.PastExperience = PriorLearned.C2CPP;
-                                break;
-                            case TopicModuleLanguage.MATLAB:
-                                upt.PastExperience = PriorLearned.C2M;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else if (top.PastExperience.Contains(2))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.C:
-                                upt.PastExperience = PriorLearned.C2CPP;
-                                break;
-                            case TopicModuleLanguage.MATLAB:
-                                upt.PastExperience = PriorLearned.CPP2M;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else if (top.PastExperience.Contains(3))
-                    {
-                        switch (user.TargetLanguage)
-                        {
-                            case TopicModuleLanguage.C:
-                                upt.PastExperience = PriorLearned.M2C;
-                                break;
-                            case TopicModuleLanguage.CPP:
-                                upt.PastExperience = PriorLearned.M2CPP;
-                                break;
-                            default:
-                                upt.PastExperience = PriorLearned.None;
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        upt.PastExperience = PriorLearned.None;
-                    }
-
-                    _ctx.UserProfileTopics.Add(upt);
-                    _ctx.SaveChanges();
-
-                }
-
-                var userProfileTopics = _ctx.UserProfileTopics
-                    .Where(x => x.UserProfileId == user.Id)
-                    .ToList();
-
-                foreach(UserProfileTopic u in userProfileTopics)
-                {
-                    var contentModules = _ctx.TopicModuleContent
-                        .Where(x => x.TopicModule.TopicId == u.TopicId && x.PriorLearned == u.PastExperience && x.Language == user.TargetLanguage || x.PriorLearned == PriorLearned.None && x.TopicModule.TopicId == u.TopicId && x.Language == user.TargetLanguage || x.TopicModule.TopicId == u.TopicId && x.Class == ContentModuleClass.Concept && x.Language == TopicModuleLanguage.Concept)
-                        .ToList();
-
-                    foreach(TopicModuleContent t in contentModules)
-                    {
-                        _ctx.UserLearningStates.Add(new UserLearningState()
-                        {
-                            AuthenticatedUserId = user.Id,
-                            LearningState = (int)LearningState.Untouched,
-                            TopicId = u.TopicId,
-                            TopicModuleContentId = t.TopicModuleContentId,
-                            TopicModuleId = t.TopicModuleId
-                        });
-                    }
-                }
-
-                try
-                {
-                    _ctx.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-                await _signInManager.SignInAsync(user, isPersistent: false);
             }
 
-            return new JsonResult("Account created.");
-
-            
+            return new JsonResult("Account created.");      
         }
 
         // Retrieve user currently logged in
@@ -221,7 +82,8 @@ namespace BUDLP.APIControllers
 
         public class Profile
         {
-            public string FullName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
             public int TargetLanguage { get; set; }

@@ -1,0 +1,43 @@
+﻿@inject SignInManager<AuthenticatedUser> SignInManager
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5THJ97Q');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <base href="/" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/semantic/dist/semantic.min.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="~/css/onboarding.css" />
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="~/js/angular/checklist-model.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.css">
+    <script src="~/lib/angular/angular-route.min.js"></script>
+    <script src="~/lib/angular/angular-sanitize.js"></script>
+    <script src="~/lib/angulartics/dist/angulartics.min.js"></script>
+    <script src="~/js/angular/dlp.js"></script>
+    <script src="~/semantic/dist/semantic.min.js"></script>
+    <script src="~/js/angular/onboardController.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+
+<body ng-app="dlp" ng-controller="onboardController as vm">
+    <div class="ui classroom borderless fixed menu">
+        <div class="ui container">
+            <div class="item">
+                <img class="ui tiny image" src="https://www.dropbox.com/s/obn44rtzbq21x39/odlebrix_3_400x84.png?dl=1">
+            </div>
+        </div>
+    </div>
+    <div class="pusher">
+        <div ng-view></div>
+    </div>
+</body>

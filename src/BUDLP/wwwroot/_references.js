@@ -4,6 +4,7 @@
 /// <reference path="js/angular/dlp.js" />
 /// <reference path="js/angular/frontpagecontroller.js" />
 /// <reference path="js/angular/modulecontroller.js" />
+/// <reference path="js/angular/onboardcontroller.js" />
 /// <reference path="js/angular/signincontroller.js" />
 /// <reference path="js/angular-wizard.min.js" />
 /// <reference path="js/front-page.js" />

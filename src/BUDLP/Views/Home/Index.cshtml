@@ -19,118 +19,74 @@
 </head>
 
 <div class="vessel" ng-app="dlp" ng-controller="frontPageController as vm">
-    <div class="front-page">
-        <div id="wavybg-wrapper" class="ui center aligned segment intro-section">
-            <canvas>Your browser does not support HTML5 canvas.</canvas>
-            <div class="_overlay-container">
-                <div class="_overlay"></div>
-            </div>
-            <h1 class="ui center aligned inverted welcome header">
-                Learn to Code through a Fully Customized Curriculum
-            </h1>
+    <div class="ui grid odle-hp">
+        <div class="odle-hero eight wide column">
+            <h1 class="odle-headline">Learn Coding and Computer Science Fundamentals</h1>
+            <h1 class="odle-subheading">OdleBrix offers a unique learning approach. Start with concepts applicable to any language and then learn how to implement them in a language of your choice.</h1>
         </div>
-        <div style="clear:both"></div>
-
-        <div class="ui vertical profile-section center aligned celled grid">
-            <div class="sixteen wide column">
-                <h1 ng-show="vm.GetStarted == undefined" class="ui header">Are you ready to start learning? Sign up now.</h1>
-                <h3 ng-show="vm.GetStarted == undefined" class="ui header">Answer a few questions to get started.</h3>
-                <button ng-show="vm.GetStarted == undefined" ng-click="vm.GetStarted = true" class="ui huge orange button _continue-button">GET STARTED</button>
-                <div class="ui row" ng-show="vm.GetStarted == true">
-                    <wizard on-finish="finishedWizard()">
-                        <wz-step wz-title="Language">
-                            <h2 class="ui header">What language do you want to learn?</h2>
-                            <h3 class="ui header">Don't worry, you can change this later if you'd like.</h3>
-                            <div class="ui center aligned container">
-                                <div class="ui six wide column">
-                                    <select ng-init="vm.UserProfile.TargetLanguage = 1" ng-model="vm.UserProfile.TargetLanguage" class="ui target language dropdown">
-                                        <option value="1">C</option>
-                                        <option value="2">C++</option>
-                                        <option value="3">MATLAB</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <br>
-                            <input class="ui large orange button" type="submit" wz-next value="Continue" />
-                        </wz-step>
-                        <wz-step wz-title="Experience">
-                            <h2>Do you have past experience in C/C++/MATLAB?</h2>
-                            <h3>Enabling a concept includes both the implementation and concept modules. Disabling a concept will only include the implementation modules.</h3>
-                            <table ng-hide="!vm.Topics" class="ui celled table">
-                                <thead class="full-width">
-                                    <tr>
-                                        <th class="three wide">Enable Concept</th>
-                                        <th>Topic</th>
-                                        <th class="five wide">Previously Completed Topic In</th>
-                                        <th>Prerequisite(s)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="x in vm.Topics" ng-init="x.PastExperience = ['0']">
-                                        <td class="collapsing">
-                                            <checkbox class="ui fitted toggle topic" checked="true" ng-model="x.ToLearn"></checkbox>
-                                        </td>
-                                        <td>{{x.TopicName}}</td>
-                                        <td>
-                                            <div class="ui form">
-                                                <div class="inline fields">
-                                                    <div class="field">
-                                                        <div class="ui checkbox">
-                                                            <input value="None" ng-change="vm.AssessPastExperience(x.PastExperience, '0', checked)" checklist-value="'0'" checklist-model="x.PastExperience" type="checkbox" name="frequency" checked="checked">
-                                                            <label>None</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui checkbox">
-                                                            <input value="C" ng-change="vm.AssessPastExperience(x.PastExperience, '1', checked)" checklist-value="'1'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
-                                                            <label>C</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui checkbox">
-                                                            <input value="C++" ng-change="vm.AssessPastExperience(x.PastExperience, '2', checked)" checklist-value="'2'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
-                                                            <label>C++</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui checkbox">
-                                                            <input value="MATLAB" ng-change="vm.AssessPastExperience(x.PastExperience, '3', checked)" checklist-value="'3'" checklist-model="x.PastExperience" type="checkbox" name="frequency">
-                                                            <label>MATLAB</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{x.PreReq}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <input class="ui large orange button" type="submit" wz-next value="All done" />
-                        </wz-step>
-                        <wz-step wz-title="Register">
-                            <h2>You're almost done!</h2>
-                            <div class="ui center aligned container">
-                                <div ng-show="vm.UserProfile.PasswordWarning !== undefined" class="ui error message">
-                                    Password must contain: <br />
-                                    At least 1 lowercase character <br />
-                                    At least 1 uppercase character <br />
-                                    At least 1 number <br />
-                                    At least 1 special character (!,@@, etc.) <br />
-                                    At least 8 characters long
-                                </div>
-                                <div class="ui form">
-                                    <input ng-model="vm.UserProfile.FullName" class="eight wide register field" autofocus placeholder="Full Name" />
-                                    <input ng-model="vm.UserProfile.Email" class="eight wide register field" placeholder="Email" />
-                                    <input ng-model="vm.UserProfile.Password" type="password" class="eight wide password register field" placeholder="Password" />
-                                </div>
-                            </div>
-                            <button ng-click="vm.CreateProfile()" class="ui large orange button" wz-next>Sign Up Now</button>
-                        </wz-step>
-                    </wizard>
+        <div class="eight wide column">
+            <div class="ui segment">
+                <form class="ui form">
+                    <div class="two fields">
+                        <div class="orf field">
+                            <label>First Name</label>
+                            <input ng-model="vm.UserProfile.FirstName" type="text" name="first-name">
+                        </div>
+                        <div class="orf field">
+                            <label>Last Name</label>
+                            <input ng-model="vm.UserProfile.LastName" type="text" name="last-name">
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="orf field">
+                            <label>Email</label>
+                            <input ng-model="vm.UserProfile.Email" type="email" name="email">
+                        </div>
+                        <div class="orf field">
+                            <label>Password</label>
+                            <input class="password register field" ng-model="vm.UserProfile.Password" type="password" name="password">
+                        </div>
+                    </div>
+                    <div ng-if="vm.UserProfile.PasswordWarning" class="ui red segment">{{vm.UserProfile.PasswordWarning}}</div>
+                    <div class="orfd ui divider"></div>
+                    <button ng-click="vm.CreateProfile()" class="orfb fluid ui blue button" type="submit">Start Learning for Free</button>
+                </form>
+            </div>
+        </div>
+        <div style="padding-top: 80px;" class="centered row">
+            <div class="sixteen wide column"><h1>OdleBrix Courses</h1></div>
+            <div class="sixteen wide column"><h3>Achieve your dreams and change the world</h3></div>
+        </div>
+        <div style="padding-top: 50px;" class="row">
+            <div class="eight wide column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">Introduction to C</div>
+                        <div class="description">
+                            <p>This course provides an introduction to the C programming language. You will learn the required background knowledge, including memory management, pointers, and how to find bugs when you inevitably use any of those incorrectly.</p>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <i class="clock icon"></i>
+                        9 hours
+                    </div>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">Introduction to MATLAB</div>
+                        <div class="description">
+                            <p>The course provides the foundations of programming in MATLAB®. Variables, arrays, conditional statements, loops, functions, and plots are explained.</p>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <i class="clock icon"></i>
+                        8 hours
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
     <script src="~/js/angular/frontPageController.js"></script>
 </div>

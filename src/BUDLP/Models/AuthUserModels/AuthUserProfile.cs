@@ -13,7 +13,9 @@ namespace BUDLP.Models.AuthUserModels
         [Required]
         public int UserId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         public string Gender { get; set; }
         public int YearOfBirth { get; set; }
         public string LevelOfEducation { get; set; }

@@ -12,7 +12,9 @@ namespace BUDLP.Models
     public class AuthenticatedUser : IdentityUser
     {
         [Required]
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public bool IsStaff { get; set; }
         [Required]

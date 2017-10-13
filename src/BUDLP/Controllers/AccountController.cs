@@ -281,7 +281,8 @@ namespace BUDLP.Controllers
                                     "&email=" + System.Net.WebUtility.UrlEncode(user.Email) +
                                     "&external_id=" + System.Net.WebUtility.UrlEncode(user.Id) +
                                     "&username=" + System.Net.WebUtility.UrlEncode(user.UserName) +
-                                    "&name=" + System.Net.WebUtility.UrlEncode(user.FullName);
+                                    "&first_name=" + System.Net.WebUtility.UrlEncode(user.FirstName) +
+                                    "&last_name=" + System.Net.WebUtility.UrlEncode(user.LastName);
 
             string encodedPayload = Convert.ToBase64String(Encoding.UTF8.GetBytes(returnPayload));
             string returnSig = getHash(encodedPayload, ssoSecret);

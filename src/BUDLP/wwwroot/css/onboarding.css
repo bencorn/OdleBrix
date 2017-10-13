@@ -1,0 +1,74 @@
+﻿.fixed.menu{
+    background-color: #2e3d49;
+}
+
+.tiny.image{
+    filter: brightness(0) invert(1);
+}
+
+.pusher{
+    top: 49px;
+    position: relative;
+    height: 100%;
+    background-image: url(//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern1.svg),linear-gradient(to bottom, #0b3e71, #0d64b0);
+}
+
+.target-language{
+    margin-top: 4em !important;
+    letter-spacing: .2px; 
+    color:white;
+    font-size: 34px;
+    font-weight: 500;
+}
+
+.flag-c{
+    background-position: -115px -5px;
+}
+
+.flag-matlab{
+    background-position: -5px -5px;
+}
+
+.flag-svg-large {
+    background-color: rgba(0,0,0,0.1);
+    margin: 0;
+    vertical-align: middle;
+    background-image: url(/images/languages.png);
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    border-radius: 200px;
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.language-card{
+    border: 2px solid rgba(238,238,238,0.25);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    height: 225px;
+    margin: 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 205px;
+    color: white;
+}
+
+.course-name{
+    font-weight: 500;
+}
+
+.num-hours{
+    font-weight: 500;
+}
+
+
+.language-card:hover {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+}   

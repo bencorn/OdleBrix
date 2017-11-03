@@ -35,10 +35,21 @@
 
     function onboardController($http, $timeout, $routeParams, $scope, $rootScope, $sce) {
         var vm = this;
+        vm.Step = 1;
+        vm.Languages = ['C', 'C++', 'MATLAB', 'Java', 'Python', 'C#'];
 
         $(function () {
 
         });
+
+        vm.SetTargetLanguage = function (lang) {
+            vm.TargetLanguge = lang;
+            var index = vm.Languages.indexOf(lang);
+            vm.Languages.splice(index, 1);
+
+            vm.Step = 2;
+            $('.pusher').css('background-image', 'url(//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern1.svg),linear-gradient(to bottom, #0d64b0, #209cf4)')
+        };
  
     }
 })();

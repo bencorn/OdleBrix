@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace BUDLP.Controllers
 {
     public class Onboard : Controller
     {
-        public IActionResult Index()
-        {
+        public IActionResult Index(int u)
+        {           
             return PartialView("Onboarding");
         }
     }

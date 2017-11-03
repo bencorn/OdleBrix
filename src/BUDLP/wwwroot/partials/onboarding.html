@@ -1,33 +1,60 @@
 ﻿<div class="ui container">
     <div class="ui centered grid">
-        <div class="row">
-            <div class="sixteen wide column">
-                <h1 class="target-language">I want to learn...</h1>
+        <div ng-if="vm.Step == 1" class="step-1">
+            <div class="row">
+                <div class="sixteen wide column">
+                    <h1 class="target-language">I want to learn...</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="eight wide column">
-                <div class="language-card">
-                    <div class="vertical-align">
-                        <div class="flag-box">
-                            <span class="flag flag-svg-large flag-flex-size flag-c"></span>
+            <div class="row">
+                <div class="eight wide column">
+                    <div ng-click="vm.SetTargetLanguage('C')" class="language-card">
+                        <div class="vertical-align">
+                            <div class="flag-box">
+                                <span class="flag flag-svg-large flag-flex-size flag-c"></span>
+                            </div>
+                            <h2 class="white course-name">
+                                C
+                            </h2>
+                            <p class="num-learners">9 hours</p>
                         </div>
-                        <h2 class="white course-name">
-                            C
-                        </h2>
-                        <p class="num-learners">9 hours</p>
+                    </div>
+                    <div ng-click="vm.SetTargetLanguage('MATLAB')" class="language-card">
+                        <div class="vertical-align">
+                            <div class="flag-box">
+                                <span class="flag flag-svg-large flag-flex-size flag-matlab"></span>
+                            </div>
+                            <h2 class="white course-name">
+                                MATLAB
+                            </h2>
+                            <p class="num-hours">6 hours</p>
+                        </div>
                     </div>
                 </div>
-                <div class="language-card">
-                    <div class="vertical-align">
-                        <div class="flag-box">
-                            <span class="flag flag-svg-large flag-flex-size flag-matlab"></span>
-                        </div>
-                        <h2 class="white course-name">
-                            MATLAB
-                        </h2>
-                        <p class="num-hours">6 hours</p>
-                    </div>
+            </div>
+        </div>
+        <div ng-if="vm.Step == 2" class="step-2">
+            <div class="row">
+                <div class="sixteen wide column">
+                    <h1 class="target-language">Great. Now choose the languages you know.</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="eight wide column">
+                    <ul class="goal-chooser">
+                        <li ng-repeat="l in vm.Languages">
+                            <label class="ui primary basic button daily-goal-option">
+                                <input ng-model="vm.BackgroundLanguages[l]" type="checkbox" class="daily-goal" ng-value="l" name="daily-goal" data-goal="10">
+                                <span class="xp-title">{{l}}</span>
+                                <span class="xp-text"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="ui primary basic button set-goal">
+                                I'M DONE
+                            </label>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@
 
 .target-language{
     margin-top: 4em !important;
+    margin-bottom: 1em !important;
     letter-spacing: .2px; 
     color:white;
     font-size: 34px;
@@ -72,3 +73,130 @@
     background: rgba(255,255,255,0.15);
     border: 2px solid rgba(255,255,255,0.5);
 }   
+
+.daily-goal-option {
+    margin: 8px;
+    padding: 10px;
+    width: 320px;
+}
+
+.ui.basic.primary.button.daily-goal-option:hover {
+    background: rgba(255,255,255,0.25) !important;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.ui.basic.primary.button{
+    margin-bottom: 16px;
+}
+
+.ui.basic.primary.button.set-goal{
+    background: #fff !important;
+    color: #34b1ee !important;
+}
+
+.ui.basic.primary.button.set-goal:hover {
+    background: rgba(255,255,255,0.9) !important;
+}
+
+.daily-goal-option .daily-goal {
+    float: left;
+    background: none;
+    border: 2px solid rgba(255,255,255,0.7);
+    margin: 0 7px 0 0;
+}
+
+input[type="checkbox"] {
+    position: relative;
+    border: none;
+    display: inline-block;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+    width: 1em;
+    height: 1em;
+    vertical-align: top;
+    margin: 0 5px 0 0;
+    background: #fff;
+    -webkit-appearance: none;
+    -webkit-border-radius: 5px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-size: 15px;
+    border: 2px solid #1caff6;
+}
+
+.daily-goal:checked:after {
+    background: #fff;
+}
+
+input[type="checkbox"]:checked:after {
+    position: absolute;
+    content: '';
+    left: 20%;
+    top: 20%;
+    height: 60%;
+    width: 60%;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+input[type="checkbox"]:focus{
+    outline: none;
+}
+
+.daily-goal-option .xp-title {
+    float: left;
+    color: white;
+}
+
+.daily-goal-option .xp-text {
+    float: right;
+    color: white;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.set-goal.button {
+    display: inline-block !important;
+    padding: 8px 20px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border-radius: 100px !important;
+    white-space: nowrap !important;
+    line-height: 20px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    -webkit-font-smoothing: antialiased !important;
+    color: #fff !important;
+    width: 320px;
+}
+
+.daily-goal-option.button {
+    display: inline-block !important;
+    padding: 8px 20px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border: 1px solid transparent !important;
+    border-radius: 100px !important;
+    white-space: nowrap !important;
+    line-height: 20px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    -webkit-font-smoothing: antialiased !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}

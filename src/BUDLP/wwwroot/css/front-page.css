@@ -23,7 +23,7 @@
     .odle-hp::before {
         content: '';
         width: 100%;
-        height: 560px;
+        height: 678px;
         z-index: -1000;
         background-image: url(//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern1.svg),linear-gradient(to bottom, #0b3e71, #0d64b0);
         transform-origin: left bottom;
@@ -38,207 +38,223 @@
     }
 }
 
-    .odle-hp::before {
-        content: '';
-        width: 100%;
-        z-index: -1000;
-        background-image: url(//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern1.svg),linear-gradient(to bottom, #0b3e71, #0d64b0);
-        transform-origin: left bottom;
-        position: absolute;
-        top: 0;
-        left: 0;
-        -webkit-transform: skew(0deg, -15deg);
-        -moz-transform: skew(0deg, -15deg);
-        -ms-transform: skew(0deg, -15deg);
-        -o-transform: skew(0deg, -15deg);
-        transform: skew(0deg, -15deg);
+@media only screen and (min-width: 2000px) {
+    .odle-courses{
+        padding-top: 4em !important;
+    }
+}
+
+@media only screen and (max-width: 1999px) {
+    .odle-courses{
+        padding-top: 8em !important;
+    }
+}
+
+.odle-courses{
+        padding-top: 8em;
     }
 
-    .odle-headline {
-        font-weight: 300;
-        font-size: 3em;
-        color: white;
-    }
+.odle-hp::before {
+    content: '';
+    width: 100%;
+    z-index: -1000;
+    background-image: url(//d7mj4aqfscim2.cloudfront.net/images/splash-2014/star-pattern1.svg),linear-gradient(to bottom, #0b3e71, #0d64b0);
+    transform-origin: left bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: skew(0deg, -15deg);
+    -moz-transform: skew(0deg, -15deg);
+    -ms-transform: skew(0deg, -15deg);
+    -o-transform: skew(0deg, -15deg);
+    transform: skew(0deg, -15deg);
+}
 
-    .odle-subheading {
-        font-weight: 300;
-        font-size: 1.5em;
-        color: white;
-    }
+.odle-headline {
+    font-weight: 300;
+    font-size: 3em;
+    color: white;
+}
 
-    .odle-hp {
-        margin-top: 7em !important;
-        height: 600px;
-        margin-left: 1em !important;
-        margin-right: 1em !important;
-    }
+.odle-subheading {
+    font-weight: 300;
+    font-size: 1.5em;
+    color: white;
+}
 
-    .orf {
-        font-size: 1.3em !important;
-        padding-bottom: 10px;
-    }
+.odle-hp {
+    margin-top: 7em !important;
+    height: 600px;
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+}
 
-    .orfd {
-        margin-top: 10px;
-        padding-bottom: 10px;
-    }
+.orf {
+    font-size: 1.3em !important;
+    padding-bottom: 10px;
+}
 
-    .orfb {
-        font-size: 1.3em !important;
-    }
+.orfd {
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
 
-    .profile-section {
-        margin-top: 0 !important;
-    }
+.orfb {
+    font-size: 1.3em !important;
+}
 
-    .login-modal {
-        width: 420px !important;
-        margin: 0 0 0 -210px !important;
-        margin-top: -200px !important;
-    }
+.profile-section {
+    margin-top: 0 !important;
+}
 
-    .profile-login-modal {
-        width: 420px !important;
-        margin: 0 0 0 -210px !important;
-        margin-top: -200px !important;
-    }
+.login-modal {
+    width: 420px !important;
+    margin: 0 0 0 -210px !important;
+    margin-top: -200px !important;
+}
 
+.profile-login-modal {
+    width: 420px !important;
+    margin: 0 0 0 -210px !important;
+    margin-top: -200px !important;
+}
+
+._overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+}
+
+.segment.intro-section {
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+}
+
+._overlay {
+    width: 100%;
+    height: 500px;
+    opacity: .5;
+    background-color: #2e3d49;
+}
+
+.login-segment {
+    padding: 30px 30px 30px 30px !important;
+}
+
+.login-modal input {
+    height: 48px !important;
+    border-radius: 0 !important;
+}
+
+.login-modal .name-field {
+    border-bottom: 0px !important;
+}
+
+.login-modal .email-field {
+    border-bottom: 0px !important;
+}
+
+.login-modal .field {
+    margin: 0 !important;
+}
+
+.profile-login-modal input {
+    height: 48px !important;
+    border-radius: 0 !important;
+}
+
+.profile-login-modal .email-field {
+    border-bottom: 0px !important;
+}
+
+.profile-login-modal .field {
+    margin: 0 !important;
+}
+
+.sign-in.button {
+    margin-top: 1em;
+    border-radius: 0;
+}
+
+.sign-up.button {
+    margin-top: 1em;
+    border-radius: 0;
+}
+
+.sign-up-terms {
+    padding-top: 10px;
+    color: rgba(0,0,0,0.54);
+    text-align: center;
+}
+
+.login-modal .login-header {
+    margin-left: 60px !important;
+}
+
+.profile-login-modal .login-header {
+    margin-left: 60px !important;
+    padding: 0.25rem 3.5rem !important;
+}
+
+.register.field {
+    margin-bottom: 5px !important;
+}
+
+.welcome.header {
+    font-weight: 500;
+    margin-top: 100px !important;
+    font-size: 3em !important;
+    vertical-align: middle;
+    position: absolute !important;
+    margin: auto;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.intro-section {
+    height: 500px;
+}
+
+canvas {
+    width: 100% !important;
+    min-height: 500px;
+}
+
+@media only screen and (max-width: 500px) {
     ._overlay-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 500px;
+        height: 150px !important;
     }
 
-    .segment.intro-section {
-        padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        margin-bottom: 0 !important;
-    }
-
-    ._overlay {
-        width: 100%;
-        height: 500px;
-        opacity: .5;
-        background-color: #2e3d49;
-    }
-
-    .login-segment {
-        padding: 30px 30px 30px 30px !important;
-    }
-
-    .login-modal input {
-        height: 48px !important;
-        border-radius: 0 !important;
-    }
-
-    .login-modal .name-field {
-        border-bottom: 0px !important;
-    }
-
-    .login-modal .email-field {
-        border-bottom: 0px !important;
-    }
-
-    .login-modal .field {
-        margin: 0 !important;
-    }
-
-    .profile-login-modal input {
-        height: 48px !important;
-        border-radius: 0 !important;
-    }
-
-    .profile-login-modal .email-field {
-        border-bottom: 0px !important;
-    }
-
-    .profile-login-modal .field {
-        margin: 0 !important;
-    }
-
-    .sign-in.button {
-        margin-top: 1em;
-        border-radius: 0;
-    }
-
-    .sign-up.button {
-        margin-top: 1em;
-        border-radius: 0;
-    }
-
-    .sign-up-terms {
-        padding-top: 10px;
-        color: rgba(0,0,0,0.54);
-        text-align: center;
-    }
-
-    .login-modal .login-header {
-        margin-left: 60px !important;
-    }
-
-    .profile-login-modal .login-header {
-        margin-left: 60px !important;
-        padding: 0.25rem 3.5rem !important;
-    }
-
-    .register.field {
-        margin-bottom: 5px !important;
-    }
-
-    .welcome.header {
-        font-weight: 500;
-        margin-top: 100px !important;
-        font-size: 3em !important;
-        vertical-align: middle;
-        position: absolute !important;
-        margin: auto;
-        top: 70px;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    #wavybg-wrapper {
+        height: 150px !important;
     }
 
     .intro-section {
-        height: 500px;
+        height: 150px !important;
+    }
+
+    ._overlay {
+        height: 150px !important;
     }
 
     canvas {
-        width: 100% !important;
-        min-height: 500px;
+        height: 150px !important;
     }
 
-    @media only screen and (max-width: 500px) {
-        ._overlay-container {
-            height: 150px !important;
-        }
-
-        #wavybg-wrapper {
-            height: 150px !important;
-        }
-
-        .intro-section {
-            height: 150px !important;
-        }
-
-        ._overlay {
-            height: 150px !important;
-        }
-
-        canvas {
-            height: 150px !important;
-        }
-
-        .welcome.header {
-            margin-top: 50px !important;
-            top: 35px;
-        }
+    .welcome.header {
+        margin-top: 50px !important;
+        top: 35px;
     }
+}
 
-    .ui.error.message {
-        width: 50% !important;
-        margin: auto !important;
-        margin-bottom: 5px !important;
-    }
+.ui.error.message {
+    width: 50% !important;
+    margin: auto !important;
+    margin-bottom: 5px !important;
+}
